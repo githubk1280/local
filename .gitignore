@@ -21,3 +21,4 @@ test-output
 classes
 /target
 /src/main/resources/
+*.txt

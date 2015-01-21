@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import lombok.Data;
+
 /**
  * <p>
  * Java class for anonymous complex type.
@@ -43,9 +45,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "toUserName", "fromUserName", "createTime",
-		"msgType", "content", "msgId" })
+@XmlType(name = "", propOrder = { "toUserName", "fromUserName", "createTime", "msgType", "content",
+		"msgId", "event", "eventKey" })
 @XmlRootElement(name = "xml")
+@Data
 public class Xml {
 
 	@XmlElement(name = "ToUserName", required = true)
@@ -54,139 +57,15 @@ public class Xml {
 	protected String fromUserName;
 	@XmlElement(name = "CreateTime")
 	protected long createTime;
-	@XmlElement(name = "MsgType", required = true)
+	@XmlElement(name = "MsgType")
 	protected String msgType;
-	@XmlElement(name = "Content", required = true)
+	@XmlElement(name = "Content")
 	protected String content;
-	@XmlElement(name = "MsgId", required = true)
+	@XmlElement(name = "MsgId")
 	protected BigDecimal msgId;
-
-	/**
-	 * Gets the value of the toUserName property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getToUserName() {
-		return toUserName;
-	}
-
-	/**
-	 * Sets the value of the toUserName property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setToUserName(String value) {
-		this.toUserName = value;
-	}
-
-	/**
-	 * Gets the value of the fromUserName property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getFromUserName() {
-		return fromUserName;
-	}
-
-	/**
-	 * Sets the value of the fromUserName property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setFromUserName(String value) {
-		this.fromUserName = value;
-	}
-
-	/**
-	 * Gets the value of the createTime property.
-	 * 
-	 */
-	public long getCreateTime() {
-		return createTime;
-	}
-
-	/**
-	 * Sets the value of the createTime property.
-	 * 
-	 */
-	public void setCreateTime(long value) {
-		this.createTime = value;
-	}
-
-	/**
-	 * Gets the value of the msgType property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getMsgType() {
-		return msgType;
-	}
-
-	/**
-	 * Sets the value of the msgType property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setMsgType(String value) {
-		this.msgType = value;
-	}
-
-	/**
-	 * Gets the value of the content property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getContent() {
-		return content;
-	}
-
-	/**
-	 * Sets the value of the content property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setContent(String value) {
-		this.content = value;
-	}
-
-	/**
-	 * Gets the value of the msgId property.
-	 * 
-	 * @return possible object is {@link BigDecimal }
-	 * 
-	 */
-	public BigDecimal getMsgId() {
-		return msgId;
-	}
-
-	/**
-	 * Sets the value of the msgId property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link BigDecimal }
-	 * 
-	 */
-	public void setMsgId(BigDecimal value) {
-		this.msgId = value;
-	}
-
-	@Override
-	public String toString() {
-		return this.getMsgId() + "-" + this.content + "-" + this.createTime
-				+ "-" + this.fromUserName + "-" + this.msgType + "-"
-				+ this.toUserName;
-	}
+	@XmlElement(name = "Event")
+	protected String event;
+	@XmlElement(name = "EventKey")
+	protected String eventKey;
 
 }

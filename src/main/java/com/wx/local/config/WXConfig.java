@@ -6,7 +6,7 @@ public class WXConfig {
 	public final static String token = "123token321";
 
 	public enum MessageTypeEnum {
-		text, image, voice, video, location, link;
+		event, text, image, voice, video, location, link;
 	}
 
 	public enum EventTypeEnum {
