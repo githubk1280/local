@@ -1,9 +1,7 @@
 package com.wx.local.controller;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.common.collect.Lists;
 import com.wx.local.beans.Xml;
 import com.wx.local.config.WXConfig;
-import com.wx.local.config.WXConfig.MessageTypeEnum;
-import com.wx.local.service.MessageHandler;
+import com.wx.local.service.MessageProcessor;
 import com.wx.local.utils.CommonUtils;
 
 @Controller
@@ -30,7 +27,7 @@ public class WXDispatchController {
 	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
-	private MessageHandler messageHandler;
+	private MessageProcessor messageProcessor;
 
 	@ResponseBody
 	@RequestMapping(value = "/wx", method = { RequestMethod.POST }, consumes = {
@@ -53,29 +50,16 @@ public class WXDispatchController {
 			logger.info("dispatch xml is null");
 			return xml;
 		}
-		if (xml.getMsgType().equals(MessageTypeEnum.event.name())) {
-			handleEvent(xml);
-		} else {
-			handleMessage(xml);
-		}
-		return xml;
+		// // if (xml.getMsgType().equals(MessageTypeEnum.event.name())) {
+		// handleEvent(xml);
+		// } else {
+		// handleMessage(xml);
+		// }
+
+		return handle(xml);
 	}
 
-	private Xml handleMessage(Xml xml) {
-		String to = xml.getFromUserName();
-		String from = xml.getToUserName();
-		xml.setCreateTime(new Date().getTime());
-		xml.setFromUserName(from);
-		xml.setToUserName(to);
-		xml.setMsgId(xml.getMsgId().add(new BigDecimal(1)));
-		xml.setContent("dispatch server said : 谢谢！");
-		logger.info(xml);
-		return messageHandler.handle(xml);
+	private Xml handle(Xml xml) {
+		return messageProcessor.process(xml);
 	}
-
-	private void handleEvent(Xml xml) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
