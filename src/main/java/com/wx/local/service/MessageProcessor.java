@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wx.local.beans.Xml;
-import com.wx.local.service.handler.MessageHandler;
+import com.wx.local.service.handler.MessageHandlerFactory;
 
 @Service
 public class MessageProcessor {
@@ -15,7 +15,11 @@ public class MessageProcessor {
 	private MessageHandlerFactory messageHandlerFactory;
 
 	public Xml process(Xml xml) {
-		MessageHandler handler = messageHandlerFactory.get(xml.getMsgType(), xml.getEvent());
-		return handler.handle(xml);
+		return messageHandlerFactory.get(xml.getMsgType()).handle(xml);
+	}
+
+	public Xml process(Xml xml, boolean isLogin) {
+		return messageHandlerFactory.get(xml.getMsgType(), xml.getEvent())
+				.handle(xml, isLogin);
 	}
 }

@@ -20,5 +20,5 @@ maven-ant-tasks.jar
 test-output
 classes
 /target
-/src/main/resources/
+/src/main/resources/pros
 *.txt
