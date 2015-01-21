@@ -7,6 +7,14 @@
 			<param name="ConversionPattern" value="[local-console]%d %-5p [%c] %m%n" />
 		</layout>
 	</appender>
+	
+	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${local_log_dir}/local.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[dailyFileAppender]%d 
+		%-5p [%c] %m%n" />
+		</layout>
+	</appender>
 
 	<appender name="ibatisFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="File" value="${local_log_dir}/ibatis.log" />
@@ -39,6 +47,7 @@
 	<root>
 		<level value="INFO" />
 		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="dailyFileAppender" />
 	</root>
 
 </log4j:configuration>

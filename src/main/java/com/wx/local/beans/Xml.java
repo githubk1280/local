@@ -184,7 +184,7 @@ public class Xml {
 
 	@Override
 	public String toString() {
-		return this.getMsgId() + "," + this.content + "-" + this.createTime
+		return this.getMsgId() + "-" + this.content + "-" + this.createTime
 				+ "-" + this.fromUserName + "-" + this.msgType + "-"
 				+ this.toUserName;
 	}
