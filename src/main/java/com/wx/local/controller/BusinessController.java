@@ -19,7 +19,7 @@ import com.wx.local.beans.Xml;
 import com.wx.local.utils.CommonUtils;
 
 @Controller
-public class BusinessController {
+public class BusinessController{
 	Logger logger = Logger.getLogger(getClass());
 
 	@ResponseBody
