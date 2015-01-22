@@ -20,7 +20,6 @@ import com.google.common.collect.Lists;
 import com.wx.local.beans.Xml;
 import com.wx.local.config.WXConfig;
 import com.wx.local.service.MessageProcessor;
-import com.wx.local.service.UserService;
 import com.wx.local.utils.CommonUtils;
 
 @Controller
@@ -29,9 +28,6 @@ public class WXDispatchController {
 
 	@Autowired
 	private MessageProcessor messageProcessor;
-
-	@Autowired
-	private UserService userService;
 
 	@ResponseBody
 	@RequestMapping(value = "/wx", method = { RequestMethod.POST }, consumes = {
@@ -51,17 +47,11 @@ public class WXDispatchController {
 			logger.error("dispatch illegal request from " + request.getRemoteHost());
 		}
 		if (null == xml) {
-			logger.info("dispatch xml is null");
+			logger.warn("dispatch xml is null");
 			return xml;
 		}
 		// if (xml.getMsgType().equals(MessageTypeEnum.event.name())) {
-		// String openId = xml.getFromUserName();
-		// boolean exists = userService.exists(openId);
-		// handleEvent(xml, exists);
-		// if (!exists) {
-		// userService.addUser(UserUtils.createNormalUser(openId));
-		// WebUtils.setSessionAttribute(request, "login", true);
-		// } else {
+		// else {
 		// boolean isLogined = WebUtils.getSessionAttribute(request,
 		// "login") != null;
 		// if (!isLogined) {

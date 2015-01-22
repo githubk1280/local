@@ -19,7 +19,7 @@ public class UserUtils {
 		user.setLevel(LevelEnum.normal.getValue());
 		user.setName("wxuser" + d.getTime());
 		user.setOpenId(openId);
-		user.setPassword("");
+		user.setPassword(String.valueOf(d.getTime()));
 		user.setRegisterTime(d);
 		user.setType(UserTypeEnum.normal.getValue());
 		return user;

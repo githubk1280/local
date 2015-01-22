@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wx.local.dao.UserDao">
+	<resultMap type="com.wx.local.beans.User" id="userResultMap">
+		<id property="id" column="id" />
+		<result property="openId" column="wxOpenId" />
+		<result property="type" column="type" />
+		<result property="level" column="level" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="homeTown" column="hometown" />
+		<result property="password" column="password" />
+		<result property="headPic" column="headPic" />
+		<result property="registerTime" column="registerTime" />
+		<result property="lastLoginTime" column="lastloginTime" />
+	</resultMap>
+
+	<!-- <parameterMap type="com.tmrasys.domain.Contract" id="userParameter"> -->
+	<!-- <parameter property="contractId" resultMap="CONTRACT_ID" /> -->
+	<!-- </parameterMap> -->
+
+	<select id="getUserByOpenId" resultMap="userResultMap"
+		parameterType="string">
+		SELECT
+		*
+		FROM User
+		WHERE
+		wxOpenId=#{userOpenId}
+	</select>
+
+	<insert id="addUser" parameterType="map">
+		INSERT INTO User
+		(wxOpenId,type,level,name,gender,hometown,password,headPic,registerTime,lastloginTime)
+		VALUES
+		(#{openId},#{type},#{level},
+		#{name},#{gender},#{homeTown},
+		#{password},#{headPic},now(),
+		#{lastLoginTime})
+	</insert>
+
+	<update id="updateLoginTime" parameterType="map">
+		UPDATE User
+		SET
+		lastloginTime = now()
+		WHERE wxOpenId=#{openId}
+	</update>
+
+
+</mapper>
+

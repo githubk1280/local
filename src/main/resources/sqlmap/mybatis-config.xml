@@ -3,5 +3,6 @@
 <configuration>
 	<mappers>
 		<mapper resource="sqlmap/mappers/com/wx/local/dao/ThirdPartyConfigInfoMapper.xml" />
+		<mapper resource="sqlmap/mappers/com/wx/local/dao/UserMapper.xml" />
 	</mappers>
 </configuration>	

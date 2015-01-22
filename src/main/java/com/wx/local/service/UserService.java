@@ -11,14 +11,18 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public boolean exists(String userOpenId) {
-		return userDao.getUserByOpenId(userDao);
+	public User getUserByOpenId(String userOpenId) {
+		return userDao.getUserByOpenId(userOpenId);
 
 	}
 
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
+		userDao.addUser(user);
+	}
+
+	public void updateLoginTime(String openId) {
+		userDao.updateLoginTime(openId);
+
 	}
 
 }
