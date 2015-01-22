@@ -1,23 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html class="js cssanimations" style="">
 <head>
 <meta charset="utf-8" />
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 <title>test-首页</title>
-<meta content="" name="description" />
-<meta content="" name="keywords" />
-<meta
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-	name="viewport" />
-<meta content="webkit" name="renderer" />
-<meta content="no-siteapp" http-equiv="Cache-Control" />
-<link href="http://7u2o1z.com1.z0.glb.clouddn.com/assets/i/favicon.png"
-	type="image/png" rel="icon" />
-<link
-	href="http://7u2o1z.com1.z0.glb.clouddn.com/assets/css/amazeui.min.css"
-	rel="stylesheet" />
-<link href="http://7u2o1z.com1.z0.glb.clouddn.com/assets/css/app.css"
-	rel="stylesheet" />
+<%@ include file="../common/header"%>
 </head>
 <body class="am-with-fixed-navbar" style="">
 	<!--[if lte IE 9]>
@@ -30,48 +21,12 @@
 				class="am-header-icon am-icon-home am-icon-sm"></i></a>
 		</div>
 		<h1 class="am-header-title">首页</h1>
-		<div class="am-header-right am-header-nav" style="right: 50px">
+		<div class="am-header-right am-header-nav">
 			<a href="#left-link" class=""><i
 				class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
 		</div>
 	</header>
-	<nav data-am-menu-offcanvas="" class="am-menu  am-menu-offcanvas1"
-		data-am-widget="menu">
-		<a class="am-menu-toggle am-active" href="javascript: void(0)"> <i
-			class="am-menu-toggle-icon am-icon-bars" style="font-size: 150%;"></i>
-		</a>
-		<div class="am-offcanvas">
-			<div class="am-offcanvas-bar am-offcanvas-bar-overlay">
-				<ul class="am-menu-nav am-avg-sm-1">
-					<li class="am-nav-header">导航栏</li>
-					<li class=""><a href="##"><span
-							class="am-icon-location-arrow"></span> <span
-							class="am-navbar-label">信息分享</span></a></li>
-					<li class=""><a href="##"><span
-							class="am-icon-location-arrow"></span> <span
-							class="am-navbar-label">新闻</span></a></li>
-					<li class=""><a href="##"><span
-							class="am-icon-location-arrow"></span> <span
-							class="am-navbar-label">运动</span></a></li>
-					<li class=""><a href="##"><span
-							class="am-icon-location-arrow"></span> <span
-							class="am-navbar-label">赛事</span></a></li>
-					<li class=""><a href="##"><span
-							class="am-icon-location-arrow"></span> <span
-							class="am-navbar-label">优惠</span></a></li>
-					<li class=""><a href="##"><span class="am-icon-user"></span>
-							<span class="am-navbar-label">关于我们</span> </a></li>
-					<li class=""><a href="##"><span
-							class="am-icon-location-arrow"></span> <span
-							class="am-navbar-label">联系我们</span> </a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- 	<div class="am-btn-group am-btn-group-justify"> -->
-	<!-- 		<a class="am-btn am-btn-default am-active" href="" style="background-color:#ffffff">图文版</a>  -->
-	<!-- 		<a class="am-btn am-btn-default" href="" style="background-color:#ffffff">纯文字版</a> -->
-	<!-- 	</div> -->
+	<%@ include file="../common/nav"%>
 	<div class="am-list-news am-list-news-default"
 		data-am-widget="list_news">
 		<!--列表标题-->
@@ -180,15 +135,7 @@
 		</div>
 	</div>
 
-	<footer class="am-footer am-footer-default " data-am-widget="footer">
-		<div class="am-footer-miscs">
-			<p>底部</p>
-		</div>
-	</footer>
-	<div class="amz-toolbar" id="amz-toolbar" style="right: 10px;">
-		<a href="#top" title="回到顶部"
-			class="am-icon-btn am-icon-arrow-up am-active" id="amz-go-top"></a>
-	</div>
+	<%@ include file="../common/footer"%>
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>
 	<script

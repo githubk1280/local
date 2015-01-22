@@ -19,10 +19,14 @@ public class UserUtils {
 		user.setLevel(LevelEnum.normal.getValue());
 		user.setName("wxuser" + d.getTime());
 		user.setOpenId(openId);
-		user.setPassword(String.valueOf(d.getTime()));
+		user.setPassword(String.valueOf(d.getTime()).substring(3, 9));
 		user.setRegisterTime(d);
 		user.setType(UserTypeEnum.normal.getValue());
 		return user;
+	}
+
+	public static void main(String args[]) {
+		System.out.println(createNormalUser("123"));
 	}
 
 	public enum GenderEnum {

@@ -8,6 +8,7 @@
 		<result property="type" column="type" />
 		<result property="level" column="level" />
 		<result property="name" column="name" />
+		<result property="alias" column="alias" />
 		<result property="gender" column="gender" />
 		<result property="homeTown" column="hometown" />
 		<result property="password" column="password" />

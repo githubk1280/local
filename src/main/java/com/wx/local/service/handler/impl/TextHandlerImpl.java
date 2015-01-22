@@ -20,7 +20,7 @@ public class TextHandlerImpl implements MessageHandler {
 		xml.setToUserName(to);
 		xml.setMsgId(xml.getMsgId().add(new BigDecimal(1)));
 		xml.setContent("感谢发话，我们会尽快完成此功能！");
-		return null;
+		return xml;
 	}
 
 }

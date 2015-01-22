@@ -17,6 +17,10 @@ public class User {
 	 */
 	private int level;
 	private String name;
+	/**
+	 * 用户修改的网站显示名
+	 */
+	private String alias;
 	private int gender;
 	/**
 	 * 家乡

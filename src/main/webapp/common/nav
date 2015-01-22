@@ -1,0 +1,30 @@
+﻿<nav data-am-menu-offcanvas="" class="am-menu  am-menu-offcanvas1"
+		data-am-widget="menu">
+		<div class="am-offcanvas">
+			<div class="am-offcanvas-bar am-offcanvas-bar-overlay">
+				<ul class="am-menu-nav am-avg-sm-1">
+					<li class="am-nav-header">导航栏</li>
+					<li class=""><a href="##"><span
+							class="am-icon-location-arrow"></span> <span
+							class="am-navbar-label">信息分享</span></a></li>
+					<li class=""><a href="##"><span
+							class="am-icon-location-arrow"></span> <span
+							class="am-navbar-label">新闻</span></a></li>
+					<li class=""><a href="##"><span
+							class="am-icon-location-arrow"></span> <span
+							class="am-navbar-label">运动</span></a></li>
+					<li class=""><a href="##"><span
+							class="am-icon-location-arrow"></span> <span
+							class="am-navbar-label">赛事</span></a></li>
+					<li class=""><a href="##"><span
+							class="am-icon-location-arrow"></span> <span
+							class="am-navbar-label">优惠</span></a></li>
+					<li class=""><a href="##"><span class="am-icon-user"></span>
+							<span class="am-navbar-label">关于我们</span> </a></li>
+					<li class=""><a href="##"><span
+							class="am-icon-location-arrow"></span> <span
+							class="am-navbar-label">联系我们</span> </a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>

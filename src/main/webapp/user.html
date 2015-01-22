@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-<title>test-投稿</title>
+<title>test-个人主页</title>
 <meta content="" name="description" />
 <meta content="" name="keywords" />
 <meta
@@ -62,32 +62,55 @@
 			</div>
 		</div>
 	</nav>
-	<form class="am-form">
+	<form action="" class="am-form" data-am-validator>
 		<fieldset>
+			<legend>个人信息设置</legend>
 			<div class="am-form-group">
-				<textarea id="doc-ta-1" rows="10" class=""
-					placeholder="分享一个。。。时间、地点、人物"></textarea>
+				<label for="doc-vld-name-2">用户名：</label> <input type="text"
+					id="doc-vld-name-2" minlength="3" placeholder="输入用户名（至少 3 个字符）"
+					required />
 			</div>
-			<div class="doc-example">
-				<a class="am-btn am-btn-primary" id="upload_button"
-					style="width: 100%">投稿</a>
-			</div>
-			<br />
+
 			<div class="am-form-group">
-				<label for="doc-ipt-file-1">传个图片(可以拍照上传哦)</label> <input type="file"
-					id="doc-ipt-file-1">
-				<p class="am-form-help">请选择要上传的文件</p>
+				<label for="doc-vld-age-2">年龄：</label> <input type="number" class=""
+					id="doc-vld-age-2" placeholder="输入年龄  18-120" min="18" max="120"
+					required />
 			</div>
-			<div class="doc-example">
-				<progress id="Progress" value="0" max="100"
-					style="width: 100%; display: none"></progress>
+
+			<div class="am-form-group">
+				<label>性别： </label> <label class="am-radio-inline"> <input
+					type="radio" value="" name="docVlGender" required> 男<i
+					class="am-icon-male"></i>
+				</label> <label class="am-radio-inline"> <input type="radio"
+					name="docVlGender"> 女
+				</label> <label class="am-radio-inline"> <input type="radio"
+					name="docVlGender"> 其他
+				</label>
 			</div>
-			<div class="doc-example">
-				<img id="source_image" class='img_container' /><img
-					id="result_image" class='img_container' />
+
+			<div class="am-form-group">
+				<label for="doc-select-1">老家</label> <select id="doc-select-1"
+					required>
+					<option value="dongan">东安</option>
+					<option value="lingling">零陵</option>
+					<option value="qita">其它</option>
+				</select> <span class="am-form-caret"></span>
 			</div>
+
+			<div class="am-form-group">
+				<label for="doc-vld-name-2">老家哪里</label> <input type="text"
+					id="laojia" placeholder="老家哪里（至少 1 个字符）" required />
+			</div>
+
+			<button class="am-btn am-btn-secondary" type="submit"
+				style="width: 100%">保存</button>
 		</fieldset>
 	</form>
+
+	<script type="text/javascript">
+		// 		$("#laojia")
+	</script>
+
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>
 	<script
@@ -96,10 +119,6 @@
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/handlebars.min.js"></script>
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.widgets.helper.js"></script>
-	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/JIC.js"></script>
-	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/demo.js"></script>
 
 </body>
 </html>
