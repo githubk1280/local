@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.WebUtils;
 
 import com.google.common.collect.Lists;
 import com.wx.local.beans.Xml;
 import com.wx.local.config.WXConfig;
 import com.wx.local.config.WXConfig.MessageTypeEnum;
 import com.wx.local.service.MessageProcessor;
+import com.wx.local.service.UserService;
 import com.wx.local.utils.CommonUtils;
+import com.wx.local.utils.UserUtils;
 
 @Controller
 public class WXDispatchController {
@@ -29,6 +32,9 @@ public class WXDispatchController {
 
 	@Autowired
 	private MessageProcessor messageProcessor;
+
+	@Autowired
+	private UserService userService;
 
 	@ResponseBody
 	@RequestMapping(value = "/wx", method = { RequestMethod.POST }, consumes = {
@@ -54,7 +60,20 @@ public class WXDispatchController {
 			return xml;
 		}
 		if (xml.getMsgType().equals(MessageTypeEnum.event.name())) {
-			return handleEvent(xml, false);
+			String openId = xml.getFromUserName();
+			boolean exists = userService.exists(openId);
+			handleEvent(xml, exists);
+			if (!exists) {
+				userService.addUser(UserUtils.createNormalUser(openId));
+				WebUtils.setSessionAttribute(request, "login", true);
+			} else {
+				boolean isLogined = WebUtils.getSessionAttribute(request,
+						"login") != null;
+				if (!isLogined) {
+					WebUtils.setSessionAttribute(request, "login", true);
+				}
+			}
+			return null;
 		} else {
 			return handleMessage(xml);
 		}
@@ -67,6 +86,5 @@ public class WXDispatchController {
 
 	private Xml handleEvent(Xml xml, boolean isLogin) {
 		return messageProcessor.process(xml, isLogin);
-
 	}
 }
