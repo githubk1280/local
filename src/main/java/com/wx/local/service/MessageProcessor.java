@@ -15,11 +15,6 @@ public class MessageProcessor {
 	private MessageHandlerFactory messageHandlerFactory;
 
 	public Xml process(Xml xml) {
-		return messageHandlerFactory.get(xml.getMsgType()).handle(xml);
-	}
-
-	public Xml process(Xml xml, boolean isLogin) {
-		return messageHandlerFactory.get(xml.getMsgType(), xml.getEvent())
-				.handle(xml, isLogin);
+		return messageHandlerFactory.get(xml.getMsgType(), xml.getEvent()).handle(xml);
 	}
 }
