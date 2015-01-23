@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wx.local.base.AbstractBaseTestConfig;
+import com.wx.local.beans.User;
 import com.wx.local.utils.UserUtils;
 
 public class UserServiceTest extends AbstractBaseTestConfig {
@@ -14,13 +15,16 @@ public class UserServiceTest extends AbstractBaseTestConfig {
 	@Test
 	@Ignore
 	public void testExists() {
-		System.out.println(service.getUserByOpenId("ozFLysooe-M0lxA_ZAygXLepJSS4"));
+		System.out.println(service
+				.getUserByOpenId("ozFLysooe-M0lxA_ZAygXLepJSS4"));
 	}
 
 	@Test
 	@Ignore
 	public void testAddUser() {
-		service.addUser(UserUtils.createNormalUser("ozFLysooe-M0lxA_ZAygXLepJSS4"));
+		User user = UserUtils.createNormalUser("ozFLysooe-M0lxA_ZAygXLepJSS4");
+		user.setAlias("中文件");
+		service.addUser(user);
 	}
 
 	@Test

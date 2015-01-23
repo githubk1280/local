@@ -29,108 +29,32 @@
 	<%@ include file="../common/nav"%>
 	<div class="am-list-news am-list-news-default"
 		data-am-widget="list_news">
-		<!--列表标题-->
 		<div class="am-list-news-bd">
 			<ul class="am-list">
-				<li
-					class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div
-						class="am-u-sm-4 am-list-thumb">
-						<a href="http://www.douban.com/online/11614662/" class=""><img
-							src="http://img5.douban.com/lpic/o636459.jpg"
-							alt="我很囧，你保重....晒晒旅行中的那些囧！"></a>
-					</div>
-					<div class="am-u-sm-8 am-list-main">
-						<h3 class="am-list-item-hd">
-							<a href="http://www.douban.com/online/11614662/" class=""
-								style="color: #555;">我很囧，你保重....晒晒旅行中的那些囧！</a>
-						</h3>
-					</div></li>
-				<!--缩略图在标题左边-->
-				<li class="am-g am-list-item-desced">
-					<div class="">
-						<article class="am-article">
-							<h3 class="am-list-item-hd">
-								<a style="color: #555;" href="/a8210.html" target="_blank"
-									rel="bookmark">北京、新疆小学生进行聊天 分享彼此爱好和梦想</a>
-							</h3>
-							<h4 class="am-article-meta">
-								发布：2015-01-16&nbsp;16:04:39 | 来源： <a target="_blank"
-									rel="nofollow" title="人民网" style="color: #575757">人民网 </a>
-							</h4>
-						</article>
-					</div>
-				</li>
-				<li
-					class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-					<div class="">
-						<article class="am-article">
-							<h2>
-								<a style="color: #555;" href="/a8209.html" target="_blank"
-									rel="bookmark">贵州自查义务教育阶段学校“大校额”情况</a>
-							</h2>
-							<h4 class="am-article-meta">
-								发布：2015-01-16&nbsp;16:04:20 | 来源： <a target="_blank"
-									rel="nofollow" title="人民网" style="color: #575757">人民网 </a>
-							</h4>
-						</article>
-					</div>
-				</li>
-				<li class="am-g am-list-item-desced">
-					<div class="">
-						<article class="am-article">
-							<h2>
-								<a style="color: #555;" href="/a8232.html" target="_blank"
-									rel="bookmark">我国成功研发出CHA本草空气净化技术</a>
-							</h2>
-							<h4 class="am-article-meta">
-								发布：2015-01-16&nbsp;16:14:05 | 来源： <a target="_blank"
-									rel="nofollow" title="中国日报网" style="color: #575757">中国日报网 </a>
-							</h4>
-						</article>
-					</div>
-				</li>
-				<li class="am-g am-list-item-desced">
-					<div class="">
-						<article class="am-article">
-							<h2>
-								<a style="color: #555;" href="/a8232.html" target="_blank"
-									rel="bookmark">我国成功研发出CHA本草空气净化技术</a>
-							</h2>
-							<h4 class="am-article-meta">
-								发布：2015-01-16&nbsp;16:14:05 | 来源： <a target="_blank"
-									rel="nofollow" title="中国日报网" style="color: #575757">中国日报网 </a>
-							</h4>
-						</article>
-					</div>
-				</li>
-				<li class="am-g am-list-item-desced">
-					<div class="">
-						<article class="am-article">
-							<h2>
-								<a style="color: #555;" href="/a8232.html" target="_blank"
-									rel="bookmark">我国成功研发出CHA本草空气净化技术</a>
-							</h2>
-							<h4 class="am-article-meta">
-								发布：2015-01-16&nbsp;16:14:05 | 来源： <a target="_blank"
-									rel="nofollow" title="中国日报网" style="color: #575757">中国日报网 </a>
-							</h4>
-						</article>
-					</div>
-				</li>
-				<li class="am-g am-list-item-desced">
-					<div class="">
-						<article class="am-article">
-							<h2>
-								<a style="color: #555;" href="/a8232.html" target="_blank"
-									rel="bookmark">我国成功研发出CHA本草空气净化技术</a>
-							</h2>
-							<h4 class="am-article-meta">
-								发布：2015-01-16&nbsp;16:14:05 | 来源： <a target="_blank"
-									rel="nofollow" title="中国日报网" style="color: #575757">中国日报网 </a>
-							</h4>
-						</article>
-					</div>
-				</li>
+				<c:forEach items="${events}" var="event">
+					<li
+						class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-top">
+						<div class="am-list-main">
+							<h3 class="am-list-item-hd">${event.content }</h3>
+							<div class="am-list-item-text"></div>
+						</div> <c:if test="${event.pics !=null && event.pics !='' }">
+							<div class="am-list-thumb am-u-sm-12">
+								<img src="${event.pics }">
+							</div>
+						</c:if>
+						<div class="am-list-thumb am-u-sm-12">
+							<fmt:formatDate value="${event.createTime }"
+								pattern="yyyy-MM-dd HH:mm:ss" />
+							| 来源： ${event.from } ${event.id }
+						</div>
+						<div class="am-list-thumb am-u-sm-12">
+							<a href=""><i class="am-icon-thumbs-o-up am-icon-sm"></i>赞(${event.zanCount })</a>
+							<a href=""><i class="am-icon-thumbs-o-down am-icon-sm"></i>Shi(${event.zanCount })</a>
+							<a href="http://fontawesome.io/icon/comments-o"><i
+								class="am-icon-comments-o am-icon-sm"></i> 评论(20)</a>
+						</div>
+					</li>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>

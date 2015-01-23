@@ -6,7 +6,7 @@ public class SystemUtils {
 
 	public final static String LOG4JDIR = File.separator + "datas"
 			+ File.separator + "applogs";
-	public final static String LOG4JDIR_WIN = "F:" + LOG4JDIR;
+	public final static String LOG4JDIR_WIN = "D:" + LOG4JDIR;
 
 	public enum SystemEnum {
 		windows, linux;

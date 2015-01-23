@@ -22,6 +22,8 @@ public class UserUtils {
 		user.setPassword(String.valueOf(d.getTime()).substring(3, 9));
 		user.setRegisterTime(d);
 		user.setType(UserTypeEnum.normal.getValue());
+		user.setPagePullId(0);
+		user.setWxPullId(0);
 		return user;
 	}
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wx.local.dao.EventDao">
+	<resultMap type="com.wx.local.beans.Event" id="eventResultMap">
+		<id property="id" column="id" />
+		<result property="pics" column="pics" />
+		<result property="content" column="content" />
+		<result property="zanCount" column="zanCount" />
+		<result property="viewCount" column="viewCount" />
+		<result property="type" column="eventType" />
+		<result property="userLocalId" column="userLocalId" />
+		<result property="userName" column="userName" />
+		<result property="from" column="fromWhere" />
+		<result property="status" column="status" />
+		<result property="region" column="region" />
+		<result property="createTime" column="createTime" />
+	</resultMap>
+
+	<select id="getEventWithLimit" resultMap="eventResultMap"
+		parameterType="map">
+		SELECT
+		*
+		FROM Event
+		WHERE
+		id>=#{id}
+		LIMIT #{start},#{offset};
+	</select>
+
+	<select id="getEventWithLimitDate" resultMap="eventResultMap"
+		parameterType="map">
+		SELECT
+		*
+		FROM Event
+		WHERE
+		createTime>=#{date}
+		LIMIT
+		#{offset};
+	</select>
+
+	<insert id="addEvent" parameterType="map">
+		INSERT INTO Event
+		(pics,content, zanCount, viewCount, eventType, userLocalId,userName,
+		fromWhere,
+		status, region,
+		createTime)
+		VALUES
+		(#{pics},#{content},#{zanCount},
+		#{viewCount},#{type},#{userLocalId},#{userName},
+		#{from},#{status},#{region},#{createTime})
+	</insert>
+
+</mapper>
+

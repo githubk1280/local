@@ -33,5 +33,13 @@ public class User {
 	private String headPic;
 	private Date registerTime;
 	private Date lastLoginTime;
+	/**
+	 * 页面拉取消息ID标识
+	 */
+	private int pagePullId;
+	/**
+	 * 微信菜单拉取ID
+	 */
+	private int wxPullId;
 
 }
