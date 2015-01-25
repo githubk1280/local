@@ -15,17 +15,46 @@
 		<result property="status" column="status" />
 		<result property="region" column="region" />
 		<result property="createTime" column="createTime" />
-		
+
 	</resultMap>
 
-	<select id="getEventWithLimit" resultMap="eventResultMap"
+	<select id="getEventWithLimitById" resultMap="eventResultMap"
 		parameterType="map">
 		SELECT
 		*
 		FROM Event
 		WHERE
-		id>=#{id}
-		LIMIT #{start},#{offset};
+		<choose>
+			<when test="direction == 'DOWN'">
+				id &lt;#{id}
+			</when>
+			<otherwise>
+				id &gt;#{id}
+			</otherwise>
+		</choose>
+		ORDER BY
+		createTime DESC
+		LIMIT #{offset};
+	</select>
+
+	<select id="getEventWithLimitByDate" resultMap="eventResultMap"
+		parameterType="map">
+		SELECT
+		*
+		FROM Event
+		WHERE
+		<choose>
+			<when test="direction == 'DOWN'">
+				createTime &lt;#{date}
+			</when>
+			<otherwise>
+				createTime &gt;#{date}
+			</otherwise>
+		</choose>
+		ORDER BY
+		createTime DESC
+		LIMIT
+		#{offset};
 	</select>
 
 	<select id="getEventWithLimitDate" resultMap="eventResultMap"
@@ -34,7 +63,9 @@
 		*
 		FROM Event
 		WHERE
-		createTime>=#{date}
+		createTime &lt;#{date}
+		ORDER BY
+		createTime DESC
 		LIMIT
 		#{offset};
 	</select>

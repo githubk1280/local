@@ -17,4 +17,10 @@ public class DateUtils {
 		c.add(Calendar.DAY_OF_MONTH, delta);
 		return c.getTime();
 	}
+
+	public static Date getDateDeltaMins(int delta) {
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.MINUTE, delta);
+		return c.getTime();
+	}
 }

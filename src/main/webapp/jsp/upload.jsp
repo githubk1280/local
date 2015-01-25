@@ -15,17 +15,6 @@
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，我们不提供支持。 请升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
-	<header class="am-header am-header-default" data-am-widget="header">
-		<div class="am-header-left am-header-nav">
-			<a href="#left-link" class=""><i
-				class="am-header-icon am-icon-home am-icon-sm"></i></a>
-		</div>
-		<h1 class="am-header-title">首页</h1>
-		<div class="am-header-right am-header-nav" >
-			<a href="#left-link" class=""><i
-				class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
-		</div>
-	</header>
 	<%@ include file="../common/nav"%>
 	<form class="am-form">
 		<fieldset>
@@ -58,9 +47,10 @@
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.js"></script>
+	<script src="../assets/js/upload/demo.js?v=1"></script>
+	<!-- 	<script -->
+	<!-- 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/demo.js"></script> -->
 	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/handlebars.min.js"></script>
-	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.widgets.helper.js"></script>
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/JIC.js"></script>
 </body>
 </html>

@@ -50,17 +50,20 @@ public class QNConfig {
 
 	@PostConstruct
 	public void init() {
-		loadKeys();
+		// loadKeys();
 	}
 
 	private void loadKeys() {
 		APPID_VALUE = thirdPartyConifgService.getValue(APPID);
 		SECRET_KEY_VALUE = thirdPartyConifgService.getValue(SECRET_KEY);
-		logger.info(String.format("qiniu load keys,APPID_VALUE=%s,SECRET_KEY_VALUE=%s",
+		logger.info(String.format(
+				"qiniu load keys,APPID_VALUE=%s,SECRET_KEY_VALUE=%s",
 				APPID_VALUE, SECRET_KEY_VALUE));
 	}
 
-	private String getUploadKey(String bucketName) throws AuthException, JSONException {
+	private String getUploadKey(String bucketName) throws AuthException,
+			JSONException {
+		loadKeys();
 		Mac mac = new Mac(APPID_VALUE, SECRET_KEY_VALUE);
 		// 请确保该bucket已经存在
 		PutPolicy putPolicy = new PutPolicy(bucketName);
@@ -69,8 +72,8 @@ public class QNConfig {
 		return upToken;
 	}
 
-	public PutRet uploadFile(File f, String serverPath, String bucketName) throws AuthException,
-			JSONException {
+	public PutRet uploadFile(File f, String serverPath, String bucketName)
+			throws AuthException, JSONException {
 		if (StringUtils.isEmpty(upToken)) {
 			getUploadKey(bucketName);
 		}
@@ -89,25 +92,32 @@ public class QNConfig {
 		if (statusCode != 200) {
 			long current = System.currentTimeMillis();
 			if ((current - start) > MAX_TRY_MILLSCENDS) {
-				logger.error(String.format("qiniu upload failed after tried %s millseconds",
+				logger.error(String.format(
+						"qiniu upload failed after tried %s millseconds",
 						MAX_TRY_MILLSCENDS));
 				return false;
 			}
 			if (count > MAX_TRY) {
-				logger.error(String.format("qiniu upload failed after tried %s times", MAX_TRY));
+				logger.error(String.format(
+						"qiniu upload failed after tried %s times", MAX_TRY));
 				return false;
 			}
-			logger.warn(String.format("Qiniu upload failed statusCode=%s,message=%s,re-try ing !",
-					statusCode, ret.getResponse()));
+			logger.warn(String
+					.format("Qiniu upload failed statusCode=%s,message=%s,re-try ing !",
+							statusCode, ret.getResponse()));
 			if (statusCode == 401) {
 				upToken = "";
+			}
+			if(statusCode == 614){
+				//alread exists
+				return false;
 			}
 		}
 		return true;
 	}
 
-	public PutRet uploadFile(InputStream in, String serverPath, String bucketName)
-			throws AuthException, JSONException {
+	public PutRet uploadFile(InputStream in, String serverPath,
+			String bucketName) throws AuthException, JSONException {
 		if (StringUtils.isEmpty(upToken)) {
 			getUploadKey(bucketName);
 		}

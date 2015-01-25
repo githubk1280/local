@@ -1,6 +1,10 @@
 package com.wx.local.init;
 
 import java.net.URL;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -20,9 +24,20 @@ public class Log4jInitialize implements
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		logger.info("Initialize reload log4j onApplicationEvent !");
-		reloadLog4j();
-		logger.info("Initialize reload log4j finished !");
+		// logger.info("Initialize reload log4j onApplicationEvent !");
+		// reloadLog4j();
+		// logger.info("Initialize reload log4j finished !");
+		prinitProperties();
+	}
+
+	private void prinitProperties() {
+		Properties pros = System.getProperties();
+		Set<Object> keys = pros.keySet();
+		Iterator<Object> elems = keys.iterator();
+		while (elems.hasNext()) {
+			String key = (String) elems.next();
+			System.out.println(key + "=" + pros.getProperty(key));
+		}
 	}
 
 	private void reloadLog4j() {

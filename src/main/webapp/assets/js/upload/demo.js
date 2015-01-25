@@ -10,13 +10,13 @@ $(function() {
 
     var fileInput = document.getElementById('doc-ipt-file-1');
     var progress = document.getElementById('Progress');
-    var me = this;
-    fileInput
-        .addEventListener(
+    var fileName = '';
+    fileInput.addEventListener(
             'change',
             function(e) {
             	progress.style.display="block";
                 var file = e.target.files[0];
+                fileName = file.name;
                 var size = file.size;
                 if (window.FileReader) {
                     var fr = new FileReader();
@@ -58,7 +58,9 @@ $(function() {
                     };
                     fr.onprogress = function(e) {
                         loaded += e.loaded;
-                        progress.value = (loaded / size) * 100;
+                        if(loaded !=0){
+                        	 progress.value = (loaded / size).toFixed(2) * 100;
+                        }
 
                     };
                     fr.readAsDataURL(file);
@@ -74,12 +76,18 @@ $(function() {
             alert("You must load an image and compress it first!");
             return false;
         }
+//        $("#upload-loading")[0].style.display = 'block';
+        var loading = $($("#upload-loading")[0]);
+        loading.show();
+        loading.removeClass("am-modal-out");
+        loading.addClass("am-modal-active");
         var callback = function(response) {
-
+        	 loading.hide();
+        	 loading.removeClass("am-modal-active");
+             loading.addClass("am-modal-out");
             alert("上传成功");
-        }
-
-        jic.upload(result_image, 'push', 'file', 'new.' + output_format,
+        };
+        jic.upload(result_image, 'upload', 'file', fileName,
             callback);
 
     }, false);

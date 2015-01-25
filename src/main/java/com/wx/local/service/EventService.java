@@ -16,30 +16,37 @@ import com.wx.local.utils.DateUtils;
 @Service
 public class EventService {
 	Logger logger = Logger.getLogger(getClass());
-	public final int NORMAL_OFFSET = 10;
+	public final int NORMAL_OFFSET = 5;
 	public final int ADMIN_OFFSET = 20;
+
+	public enum PullDirection {
+		UP, DOWN;
+	}
 
 	@Autowired
 	private EventDao eventDao;
 
-	public List<Event> getEventWithLimit(int id, int start, int offset) {
-		List<Event> events = eventDao.getEventWithLimit(id, start, offset);
+	public List<Event> getEventWithLimitById(int id, String direction,
+			int offset) {
+		List<Event> events = eventDao.getEventWithLimitById(id, direction,
+				offset);
 		if (CollectionUtils.isEmpty(events))
 			return Collections.emptyList();
-		return events;
-	}
-
-	public List<Event> getEventWithLimit(Date now, int offset) {
-		List<Event> events = eventDao.getEventWithLimitDate(
-				DateUtils.formt(now), offset);
-		if (CollectionUtils.isEmpty(events))
-			return Collections.emptyList();
-		logger.info(String.format("get events size=%s", events.size()));
 		return events;
 	}
 
 	public void addEvent(Event event) {
 		eventDao.addEvent(event);
+	}
+
+	public List<Event> getEventWithLimitByDate(Date now, String direction,
+			int offset) {
+		List<Event> events = eventDao.getEventWithLimitByDate(
+				DateUtils.formt(now), direction, offset);
+		if (CollectionUtils.isEmpty(events))
+			return Collections.emptyList();
+		logger.info(String.format("get events size=%s", events.size()));
+		return events;
 	}
 
 }

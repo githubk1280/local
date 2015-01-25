@@ -10,12 +10,12 @@ import com.wx.local.beans.Event;
 @Repository
 public interface EventDao {
 
-	public List<Event> getEventWithLimit(@Param("id") int id,
-			@Param("start") int start, @Param("offset") int offset);
-
-	public List<Event> getEventWithLimitDate(@Param("date") String date,
-			@Param("offset") int offset);
+	public List<Event> getEventWithLimitById(@Param("id") int id,
+			@Param("direction") String direction, @Param("offset") int offset);
 
 	public void addEvent(Event event);
+
+	public List<Event> getEventWithLimitByDate(@Param("date") String date,
+			@Param("direction") String direction, @Param("offset") int offset);
 
 }

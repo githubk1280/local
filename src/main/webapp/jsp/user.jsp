@@ -15,17 +15,6 @@
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，我们不提供支持。 请升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
-	<header class="am-header am-header-default" data-am-widget="header">
-		<div class="am-header-left am-header-nav">
-			<a href="#left-link" class=""><i
-				class="am-header-icon am-icon-home am-icon-sm"></i></a>
-		</div>
-		<h1 class="am-header-title">首页</h1>
-		<div class="am-header-right am-header-nav" >
-			<a href="#left-link" class=""><i
-				class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
-		</div>
-	</header>
 	<%@ include file="../common/nav"%>
 	<form action="" class="am-form" data-am-validator>
 		<fieldset>
@@ -78,6 +67,20 @@
 				style="width: 100%">保存</button>
 		</fieldset>
 	</form>
+	﻿
+	<div data-am-sticky>
+		<header class="am-header am-header-default " data-am-widget="header">
+			<div class="am-header-left am-header-nav">
+				<a href="/local/index" class=""><i
+					class="am-header-icon am-icon-home am-icon-sm"></i></a>
+			</div>
+			<h1 class="am-header-title">首页</h1>
+			<div class="am-header-right am-header-nav">
+				<a href="/local/send/show" class=""><i
+					class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
+			</div>
+		</header>
+	</div>
 	<%@ include file="../common/footer"%>
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>

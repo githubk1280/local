@@ -15,19 +15,31 @@ import org.springframework.web.util.WebUtils;
 import com.alibaba.fastjson.JSON;
 import com.wx.local.beans.Event;
 import com.wx.local.service.EventService;
+import com.wx.local.service.EventService.PullDirection;
 import com.wx.local.utils.JsonResponseUtils;
 
 @Controller
+@RequestMapping("/event")
 public class EventController {
 	@Autowired
 	private EventService eventService;
 
-	@RequestMapping("/ajax/load/{id}/{index}")
-	public void ajaxLoad(@PathVariable int id, @PathVariable int index,
-			int direction, HttpServletRequest request,
+	@RequestMapping("/ajax/down/{id}")
+	public void ajaxDownLoad(@PathVariable int id, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		List<Event> events = eventService.getEventWithLimit(id, index,
+		List<Event> events = eventService.getEventWithLimitById(id,
+				PullDirection.DOWN.name(), eventService.NORMAL_OFFSET);
+		WebUtils.setSessionAttribute(request, "pullId",
 				eventService.NORMAL_OFFSET);
+		JsonResponseUtils.returnJsonResponse(response,
+				JSON.toJSONString(events), true, 200);
+	}
+
+	@RequestMapping("/ajax/up/{id}")
+	public void ajaxUpLoad(@PathVariable int id, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		List<Event> events = eventService.getEventWithLimitById(id,
+				PullDirection.UP.name(), eventService.NORMAL_OFFSET);
 		WebUtils.setSessionAttribute(request, "pullId",
 				eventService.NORMAL_OFFSET);
 		JsonResponseUtils.returnJsonResponse(response,

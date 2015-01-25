@@ -7,5 +7,19 @@
 		<a href="#top" title="回到顶部"
 			class="am-icon-btn am-icon-arrow-up am-active" id="amz-go-top"></a>
 			<p></p>
-		<a href="#amz-offcanvas" class="am-icon-btn am-icon-bars am-show-sm-only amz-sidebar-toggle" data-am-offcanvas=""><span class="am-sr-only">侧栏导航</span></a>
+		<a href="#leftNavBars"
+		class="am-icon-btn am-icon-bars am-show-sm-only amz-sidebar-toggle am-menu-toggle"
+		data-am-offcanvas=""><span class="am-sr-only">侧栏导航</span></a>
 </div>
+
+<div id="upload-loading" tabindex="-1"
+		class="am-modal am-modal-loading am-modal-no-btn am-modal-out"
+		style="display: none; margin-top: -51px;">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">正在载入...</div>
+			<div class="am-modal-bd">
+				<span class="am-icon-spinner am-icon-spin"></span>
+			</div>
+		</div>
+</div>
+
