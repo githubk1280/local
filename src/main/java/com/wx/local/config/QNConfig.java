@@ -83,11 +83,12 @@ public class QNConfig {
 		int count = 1;
 		do {
 			ret = IoApi.putFile(upToken, serverPath, f, extra);
-		} while (retry(ret, start, count++));
+		} while (retry(ret, start, count++,bucketName));
 		return ret;
 	}
 
-	private boolean retry(PutRet ret, long start, int count) {
+	private boolean retry(PutRet ret, long start, int count, String bucketName)
+			throws AuthException, JSONException {
 		int statusCode = ret.getStatusCode();
 		if (statusCode != 200) {
 			long current = System.currentTimeMillis();
@@ -106,14 +107,15 @@ public class QNConfig {
 					.format("Qiniu upload failed statusCode=%s,message=%s,re-try ing !",
 							statusCode, ret.getResponse()));
 			if (statusCode == 401) {
-				upToken = "";
+				getUploadKey(bucketName);
 			}
 			if(statusCode == 614){
 				//alread exists
 				return false;
 			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public PutRet uploadFile(InputStream in, String serverPath,
@@ -127,7 +129,7 @@ public class QNConfig {
 		int count = 1;
 		do {
 			ret = IoApi.Put(upToken, serverPath, in, extra);
-		} while (retry(ret, start, count));
+		} while (retry(ret, start, count,bucketName));
 		return ret;
 	}
 

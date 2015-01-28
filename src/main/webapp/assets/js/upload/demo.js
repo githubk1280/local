@@ -10,11 +10,12 @@ $(function() {
 
     var fileInput = document.getElementById('doc-ipt-file-1');
     var progress = document.getElementById('Progress');
+    var progressContainer = $(progress.parentNode);
     var fileName = '';
     fileInput.addEventListener(
             'change',
             function(e) {
-            	progress.style.display="block";
+            	progressContainer.show();
                 var file = e.target.files[0];
                 fileName = file.name;
                 var size = file.size;
@@ -54,12 +55,17 @@ $(function() {
                             result_image.style.display = "block";
 
                         };
-                        progress.style.display="none";
+                        progressContainer.hide();
+                        uploadPic();
                     };
                     fr.onprogress = function(e) {
                         loaded += e.loaded;
+                        var percentage = 0;
                         if(loaded !=0){
-                        	 progress.value = (loaded / size).toFixed(2) * 100;
+                        	percentage  = (loaded / size).toFixed(2) * 100;
+                        	percentage = percentage + "%";
+                        	$(progress).width(percentage);
+                        	$(progress).html(percentage);
                         }
 
                     };
@@ -67,29 +73,39 @@ $(function() {
 
                 }
             });
-
-    // HANDLE UPLOAD BUTTON
-    var uploadButton = document.getElementById("upload_button");
-    uploadButton.addEventListener('click', function(e) {
+    
+    var uploadPic = function(){
+    	var $modal = $("#upload-loading");
+    	$modal.modal('toggle');
         var result_image = document.getElementById('result_image');
         if (result_image.src == "") {
             alert("You must load an image and compress it first!");
             return false;
         }
-//        $("#upload-loading")[0].style.display = 'block';
-        var loading = $($("#upload-loading")[0]);
-        loading.show();
-        loading.removeClass("am-modal-out");
-        loading.addClass("am-modal-active");
         var callback = function(response) {
-        	 loading.hide();
-        	 loading.removeClass("am-modal-active");
-             loading.addClass("am-modal-out");
-            alert("上传成功");
+        	var res = JSON.parse(response);
+        	$modal.modal('toggle');
+            $('.am-dimmer').hide();
+        	if(res.success){
+        		$("#upload-success")[0].style.display = 'block';
+        		$("#upload-failed")[0].style.display = 'none';
+        		$('#picUrl').val(res.data);
+        	}else{
+            	$("#upload-failed")[0].style.display = 'block';
+        	}
         };
         jic.upload(result_image, 'upload', 'file', fileName,
             callback);
+    };
 
+    // HANDLE UPLOAD BUTTON
+    var uploadButton = document.getElementById("upload_button");
+    uploadButton.addEventListener('click', function(e) {
+    	if($('#textId').val() ==''){
+			alert('内容不能为空！');
+			return;
+		}
+    	$('form').submit();
     }, false);
 
     /** * END OF DRAG & DROP STUFF WITH FILE API * */

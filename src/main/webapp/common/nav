@@ -10,7 +10,7 @@
 					class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
 			</div>
 		</header>
-	</div>
+</div>
 ﻿<nav data-am-menu-offcanvas="" class="am-menu  am-menu-offcanvas1"
 		data-am-widget="menu">
 		<div class="am-offcanvas" id="leftNavBars">

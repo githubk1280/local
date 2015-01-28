@@ -63,24 +63,11 @@
 					id="laojia" placeholder="老家哪里（至少 1 个字符）" required />
 			</div>
 
-			<button class="am-btn am-btn-secondary" type="submit"
+			<button class="am-btn am-btn-primary" type="submit"
 				style="width: 100%">保存</button>
 		</fieldset>
 	</form>
 	﻿
-	<div data-am-sticky>
-		<header class="am-header am-header-default " data-am-widget="header">
-			<div class="am-header-left am-header-nav">
-				<a href="/local/index" class=""><i
-					class="am-header-icon am-icon-home am-icon-sm"></i></a>
-			</div>
-			<h1 class="am-header-title">首页</h1>
-			<div class="am-header-right am-header-nav">
-				<a href="/local/send/show" class=""><i
-					class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
-			</div>
-		</header>
-	</div>
 	<%@ include file="../common/footer"%>
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>

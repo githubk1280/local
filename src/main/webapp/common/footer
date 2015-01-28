@@ -13,10 +13,10 @@
 </div>
 
 <div id="upload-loading" tabindex="-1"
-		class="am-modal am-modal-loading am-modal-no-btn am-modal-out"
+		class="am-modal am-modal-loading am-modal-no-btn"
 		style="display: none; margin-top: -51px;">
 		<div class="am-modal-dialog">
-			<div class="am-modal-hd">正在载入...</div>
+			<div class="am-modal-hd">正在上传...</div>
 			<div class="am-modal-bd">
 				<span class="am-icon-spinner am-icon-spin"></span>
 			</div>

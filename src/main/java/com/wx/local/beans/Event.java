@@ -12,10 +12,11 @@ public class Event {
 	private String content;
 	private int zanCount;
 	private int viewCount;
+	private String eventName;
 	/**
 	 * 广告? 实事
 	 */
-	private String type;
+	private int type;
 	private String userLocalId;
 	private String userName;
 	private String from;

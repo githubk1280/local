@@ -16,25 +16,36 @@
   以获得更好的体验！</p>
 <![endif]-->
 	<%@ include file="../common/nav"%>
-	<form class="am-form">
+	<form class="am-form" action="/local/event/add" method="post">
 		<fieldset>
 			<div class="am-form-group">
-				<textarea id="doc-ta-1" rows="10" class=""
-					placeholder="分享一个。。。时间、地点、人物"></textarea>
+				<textarea rows="10" class="" name="text" id="textId"
+					placeholder="分享一个。。。时间、地点、人物" required></textarea>
+				<input type="hidden" id="picUrl" name="picPath" />
 			</div>
 			<div class="doc-example">
 				<a class="am-btn am-btn-primary" id="upload_button"
+					data-am-modal="{target: '#upload-loading',width: 100%, height: 225}"
 					style="width: 100%">投稿</a>
 			</div>
 			<br />
+			<div class="am-alert am-alert-success" data-am-alert
+				style="display: none" id="upload-success">
+				<button type="button" class="am-close">&times;</button>
+				<p>图片上传成功,可以投稿了</p>
+			</div>
+			<div class="am-alert am-alert-secondary" data-am-alert
+				style="display: none" id="upload-failed">
+				<button type="button" class="am-close">&times;</button>
+				<p>啊噢，图片上传出了点小故障，请稍后重试</p>
+			</div>
 			<div class="am-form-group">
 				<label for="doc-ipt-file-1">传个图片(可以拍照上传哦)</label> <input type="file"
 					id="doc-ipt-file-1">
 				<p class="am-form-help">请选择要上传的文件</p>
 			</div>
-			<div class="doc-example">
-				<progress id="Progress" value="0" max="100"
-					style="width: 100%; display: none"></progress>
+			<div class="am-progress" style="display: none">
+				<div class="am-progress-bar" style="width: 0%" id="Progress">40%</div>
 			</div>
 			<div class="doc-example">
 				<img id="source_image" class='img_container' /><img

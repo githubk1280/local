@@ -15,7 +15,7 @@
 		<result property="status" column="status" />
 		<result property="region" column="region" />
 		<result property="createTime" column="createTime" />
-
+		<result property="eventName" column="eventName" />
 	</resultMap>
 
 	<select id="getEventWithLimitById" resultMap="eventResultMap"
@@ -72,12 +72,12 @@
 
 	<insert id="addEvent" parameterType="map">
 		INSERT INTO Event
-		(pics,content, zanCount, viewCount, eventType, userLocalId,userName,
+		(pics,content,eventName, zanCount, viewCount, eventType, userLocalId,userName,
 		fromWhere,
 		status, region,
 		createTime)
 		VALUES
-		(#{pics},#{content},#{zanCount},
+		(#{pics},#{content},#{eventName},#{zanCount},
 		#{viewCount},#{type},#{userLocalId},#{userName},
 		#{from},#{status},#{region},#{createTime})
 	</insert>

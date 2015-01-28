@@ -1,7 +1,9 @@
 package com.wx.local.controller.view;
 
 import java.io.IOException;
+import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import com.qiniu.api.io.PutRet;
 import com.wx.local.config.QNConfig;
@@ -34,12 +37,17 @@ public class UploadController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public void send(MultipartFile file, HttpServletResponse response)
-			throws IOException {
+	public void send(MultipartFile file, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		PutRet result = null;
+		String openId = (String) WebUtils
+				.getSessionAttribute(request, "openId");
+		String eventName = String.valueOf(new Date().getTime());
+		String fileName = openId + "#" + eventName + "#"
+				+ file.getOriginalFilename();
 		try {
-			result = qnConfig.uploadFile(file.getInputStream(),
-					file.getOriginalFilename(), BUCKET_PICS.pics.name());
+			result = qnConfig.uploadFile(file.getInputStream(), fileName,
+					BUCKET_PICS.pics.name());
 		} catch (Exception e) {
 			logger.error(String.format("upload failed detail :", e.getMessage()));
 			JsonResponseUtils.returnJsonResponse(response, "上传失败，请重试", false,
