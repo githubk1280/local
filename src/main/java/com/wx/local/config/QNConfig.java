@@ -61,7 +61,7 @@ public class QNConfig {
 				APPID_VALUE, SECRET_KEY_VALUE));
 	}
 
-	private String getUploadKey(String bucketName) throws AuthException,
+	public String getUploadKey(String bucketName) throws AuthException,
 			JSONException {
 		loadKeys();
 		Mac mac = new Mac(APPID_VALUE, SECRET_KEY_VALUE);

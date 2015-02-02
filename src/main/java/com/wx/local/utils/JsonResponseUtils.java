@@ -21,14 +21,26 @@ public class JsonResponseUtils {
 			T t, boolean success, int statusCode) throws IOException {
 		JSONObject json = new JSONObject();
 		String jsonStr = "";
-		if(t instanceof String){
+		if (t instanceof String) {
 			jsonStr = (String) t;
-		}else{
+		} else {
 			jsonStr = JSON.toJSONString(t);
 		}
 		json.put("success", success);
 		json.put("statusCode", statusCode);
 		json.put("data", jsonStr);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter writer = response.getWriter();
+		writer.write(json.toJSONString());
+		writer.flush();
+		writer.close();
+
+	}
+
+	public static void returnSimtpleResponse(HttpServletResponse response,
+			String key ,String value) throws IOException {
+		JSONObject json = new JSONObject();
+		json.put(key, value);
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter writer = response.getWriter();
 		writer.write(json.toJSONString());

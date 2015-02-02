@@ -79,7 +79,7 @@
 		VALUES
 		(#{pics},#{content},#{eventName},#{zanCount},
 		#{viewCount},#{type},#{userLocalId},#{userName},
-		#{from},#{status},#{region},#{createTime})
+		#{from},#{status},#{region},now())
 	</insert>
 
 </mapper>

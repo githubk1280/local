@@ -1,6 +1,7 @@
 package com.wx.local.controller.view;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,14 +61,17 @@ public class EventController {
 		logger.info(text + "--" + picPath);
 		String openId = (String) WebUtils
 				.getSessionAttribute(request, "openId");
-		String eventName = getEventName(picPath);
+		String eventName = "";
 		Event event = EventUtils.createNormalEvent(openId);
+		event.setPics(picPath);
 		event.setEventName(eventName);
 		event.setContent(text);
-		event.setUserLocalId(openId);
+		event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客"
+				+ new Date().getTime() : openId);
+		event.setFrom("website");
 		eventService.addEvent(event);
 		// view.addObject("", "");
-		view.setViewName(PageResourceConstant.USER);
+		view.setViewName(PageResourceConstant.INDEX);
 		return view;
 	}
 

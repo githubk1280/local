@@ -33,7 +33,7 @@ public class EventServiceTest extends AbstractBaseTestConfig {
 			// event.setPics("sdafs");
 			event.setRegion("dds");
 			event.setStatus(0);
-			event.setType("0");
+			event.setType(0);
 			event.setUserLocalId("test1232132");
 			event.setUserName("testabc");
 			event.setViewCount(0);

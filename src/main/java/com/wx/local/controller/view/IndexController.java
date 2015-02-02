@@ -35,12 +35,13 @@ public class IndexController {
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView view = new ModelAndView();
+		view.addObject("title", "首页");
 		List<Event> events = eventService.getEventWithLimitByDate(
 				getUserPullFromDate(request), PullDirection.DOWN.name(),
 				eventService.NORMAL_OFFSET);
+		logger.info(events);
 		int upStartId = setPullId(request, "upPullStartId", events, 0);
-		int downStartId = setPullId(request, "downPullStartId", events,
-				events.size() - 1);
+		int downStartId = setPullId(request, "downPullStartId", events, 0);
 		view.addObject("events", events);
 		view.addObject("upStartId", upStartId);
 		view.addObject("downStartId", downStartId);
@@ -51,22 +52,21 @@ public class IndexController {
 	private int setPullId(HttpServletRequest request, String key,
 			List<Event> events, int index) {
 		Integer id = (Integer) WebUtils.getSessionAttribute(request, key);
-		if (null == id) {
-			if (CollectionUtils.isEmpty(events)) {
-				id = 0;
-			} else {
-				id = events.get(index).getId();
-			}
+		if (CollectionUtils.isEmpty(events)) {
+			id = 0;
+		} else {
+			id = events.get(index).getId();
 		}
+		logger.info("id=" + id);
 		WebUtils.setSessionAttribute(request, key, id);
 		return id;
 	}
 
 	private Date getUserPullFromDate(HttpServletRequest request) {
 		Date d = (Date) WebUtils.getSessionAttribute(request, "pullStartDate");
-		if (null == d) {
-			d = DateUtils.getDateDeltaMins(-30);
-		}
+		d = DateUtils.getDateDeltaMins(0);
+		WebUtils.setSessionAttribute(request, "pullStartDate", d);
+		logger.info(d);
 		return d;
 
 	}
