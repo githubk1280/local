@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8" />
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-<title>永州人看这里</title>
+<title>永州生活网</title>
 <%@ include file="../common/header"%>
 </head>
 <body class="am-with-fixed-navbar" style="">
@@ -32,33 +32,28 @@
 			</form>
 		</div>
 		<br />
-<!-- 		<form class="am-form" action="/local/send/upload" method="post" -->
-<!-- 			id="picForm"> -->
-			<div class="am-form-group">
-				<label for="doc-ipt-file-1">传个图片(可以拍照上传哦)</label> <input type="file"
-					name="file" id="pickfiles">
-				<p class="am-form-help">请选择要上传的文件</p>
-			</div>
-			<div class="doc-example">
-				<img id="source_image" class='img_container' /><img
-					id="result_image" class='img_container' />
-			</div>
-		<!-- 		</form> -->
+		<div class="am-form-group">
+			<label for="doc-ipt-file-1">传个图片(可以拍照上传哦)</label> <input type="file"
+				name="file" id="uploadFileId">
+			<p class="am-form-help">请选择要上传的文件</p>
+		</div>
+		<div class="doc-example">
+			<img id="source_image" class='img_container' /><img
+				id="result_image" class='img_container' />
+		</div>
 	</fieldset>
 	<%@ include file="../common/footer"%>
-	<!-- 	<script -->
-	<!-- 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script> -->
-	<!-- 	<script -->
-	<!-- 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.js"></script> -->
-	<!-- 	<script src="../assets/js/upload/demo2.js?v=2"></script> -->
-	<!-- 	<script -->
-	<!-- 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/demo.js"></script> -->
-	<!-- 	<script -->
-	<!-- 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/JIC.js"></script> -->
-
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/amazeui.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/upload/JIC.js"></script>
-	<script src="<%=request.getContextPath()%>/assets/js/upload/demo.js"></script>
+	<script
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>
+	<script
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.js"></script>
+	<script
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v4/JIC.js"></script>
+	<script
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v2/demo.js"></script>
+	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script> --%>
+	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/amazeui.js"></script> --%>
+	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/upload/JIC.js"></script> --%>
+	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/upload/demo.js"></script> --%>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * JIC JavaScript Library v1.1
  * https://github.com/brunobar79/J-I-C/
  *
@@ -31,12 +31,15 @@ var jic = {
                 mime_type = "image/png";
              }
              
-
+             alert(source_img_obj);
              var cvs = document.createElement('canvas');
+             alert(cvs);
              cvs.width = source_img_obj.naturalWidth;
              cvs.height = source_img_obj.naturalHeight;
+             alert(cvs.toDataURL);
              var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0);
              var newImageData = cvs.toDataURL(mime_type, quality/100);
+             alert(newImageData);
              var result_image_obj = new Image();
              result_image_obj.src = newImageData;
              return result_image_obj;

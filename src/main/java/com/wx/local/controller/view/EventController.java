@@ -18,7 +18,6 @@ import org.springframework.web.util.WebUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.wx.local.beans.Event;
-import com.wx.local.constants.PageResourceConstant;
 import com.wx.local.service.EventService;
 import com.wx.local.service.EventService.PullDirection;
 import com.wx.local.utils.EventUtils;
@@ -71,12 +70,12 @@ public class EventController {
 		event.setFrom("website");
 		eventService.addEvent(event);
 		// view.addObject("", "");
-		view.setViewName(PageResourceConstant.INDEX);
+		view.setViewName("redirect:/index");
 		return view;
 	}
 
-	private String getEventName(String picPath) {
-		return picPath
-				.substring(picPath.indexOf("#"), picPath.lastIndexOf("#"));
-	}
+	// private String getEventName(String picPath) {
+	// return picPath
+	// .substring(picPath.indexOf("#"), picPath.lastIndexOf("#"));
+	// }
 }

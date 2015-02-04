@@ -75,7 +75,8 @@ public class UploadController {
 	public void send(MultipartFile file, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		PutRet result = null;
-		String fileName = "file-pics-" + file.getOriginalFilename();
+		String fileName = "file-pics-" + file.getOriginalFilename()
+				+ new Date().getTime();
 		try {
 			result = qnConfig.uploadFile(file.getInputStream(), fileName,
 					BUCKET_PICS.pics.name());

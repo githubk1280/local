@@ -7,52 +7,8 @@
 <head>
 <meta charset="utf-8" />
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-<title>永州人看这里</title>
+<title>永州生活网</title>
 <%@ include file="../common/header"%>
-<style>
-html,body,.page {
-	height: 100%;
-}
-
-#wrapper {
-	position: absolute;
-	top: 49px;
-	bottom: 0;
-	overflow: hidden;
-	margin: 0;
-	width: 100%;
-	padding: 0 8px;
-	background-color: #f8f8f8;
-}
-
-.am-list {
-	margin: 0;
-}
-
-.am-list>li {
-	background: none;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.pull-action {
-	text-align: center;
-	height: 45px;
-	line-height: 45px;
-	color: #999;
-}
-
-.pull-action .am-icon-spin {
-	display: none;
-}
-
-.pull-action.loading .am-icon-spin {
-	display: block;
-}
-
-.pull-action.loading .pull-label {
-	display: none;
-}
-</style>
 </head>
 <body class="am-with-fixed-navbar" style="" onload="getFirst()">
 	<!--[if lte IE 9]>
@@ -96,7 +52,7 @@ html,body,.page {
 			$
 					.ajax({
 						type : 'get',
-						url : '/local/event/ajax/down/' + Number.parseInt(id),
+						url : '/local/event/ajax/down/'+id,
 						success : function(response) {
 							var data = JSON.parse(JSON.parse(response).data);
 							var parent = $('#allEvents');
