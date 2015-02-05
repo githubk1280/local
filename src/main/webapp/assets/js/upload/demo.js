@@ -26,7 +26,6 @@
 
 				result_image.src = jic.compress(source_image, quality,
 						output_format).src;
-				alert(14 + result_image.src);
 				// source_image.style.display = "none";
 				$('#source_image').hide();
 

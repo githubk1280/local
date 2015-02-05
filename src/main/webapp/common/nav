@@ -1,12 +1,12 @@
 ﻿<div data-am-sticky>
 		<header class="am-header am-header-default " data-am-widget="header">
 			<div class="am-header-left am-header-nav">
-				<a href="/local/index" class=""><i
+				<a href="/local/index?openId=${openId}" class=""><i
 					class="am-header-icon am-icon-home am-icon-sm"></i></a>
 			</div>
 			<h1 class="am-header-title">${title}</h1>
 			<div class="am-header-right am-header-nav">
-				<a href="/local/send/show" class=""><i
+				<a href="/local/send/show?openId=${openId}" class=""><i
 					class="am-header-icon am-icon-camera" style="font-size: 150%;"></i></a>
 			</div>
 		</header>

@@ -70,6 +70,14 @@ public class UploadController {
 		view.setViewName(PageResourceConstant.UPLOAD_QN);
 		return view;
 	}
+	
+	@RequestMapping("/show/form")
+	public ModelAndView sendJumpForm() {
+		ModelAndView view = new ModelAndView();
+		view.addObject("title", "投稿");
+		view.setViewName(PageResourceConstant.UPLOAD_FORM);
+		return view;
+	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public void send(MultipartFile file, HttpServletRequest request,
