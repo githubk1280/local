@@ -48,9 +48,9 @@
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.js"></script>
 	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/qiniu.min.js"></script>
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v1qiniu.min.js"></script>
 	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/20150203v1/assets/js/uploadmain.js"></script>
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v1main.js"></script>
 	<!-- 	<script -->
 	<%-- 		src="<%=request.getContextPath()%>/assets/js/plupload/plupload.full.min.js"></script> --%>
 	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script> --%>

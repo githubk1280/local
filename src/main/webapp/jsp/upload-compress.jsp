@@ -48,9 +48,9 @@
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.js"></script>
 	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v4/JIC.js"></script>
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v8/JIC.js"></script>
 	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v2/demo.js"></script>
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/upload/v8/demo.js"></script>
 	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script> --%>
 	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/amazeui.js"></script> --%>
 	<%-- 	<script src="<%=request.getContextPath()%>/assets/js/upload/JIC.js"></script> --%>
