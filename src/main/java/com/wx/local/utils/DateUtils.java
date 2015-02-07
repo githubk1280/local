@@ -19,7 +19,7 @@ public class DateUtils {
 	public static Date getDate(int delta) {
 		Calendar c = Calendar.getInstance();
 		c.add(Calendar.DAY_OF_MONTH, delta);
-		logger.info(c.getTime());
+		// logger.info(c.getTime());
 		return c.getTime();
 	}
 

@@ -16,8 +16,7 @@ import org.springframework.util.StringUtils;
 import com.wx.local.utils.SystemUtils;
 
 @Component
-public class Log4jInitialize implements
-		ApplicationListener<ContextRefreshedEvent> {
+public class Log4jInitialize implements ApplicationListener<ContextRefreshedEvent> {
 	Logger logger = Logger.getLogger(getClass());
 
 	public final String LOG_LOCATIONS = "/log4j.xml";
@@ -27,7 +26,7 @@ public class Log4jInitialize implements
 		// logger.info("Initialize reload log4j onApplicationEvent !");
 		// reloadLog4j();
 		// logger.info("Initialize reload log4j finished !");
-		prinitProperties();
+		// prinitProperties();
 	}
 
 	private void prinitProperties() {

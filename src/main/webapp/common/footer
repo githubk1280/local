@@ -4,11 +4,11 @@
 		</div>
 </footer>-->
 <div class="amz-toolbar" id="amz-toolbar" style="right: 10px;">
-		<a href="#top" title="回到顶部"
+		<a href="#top" title="回到顶部" style="color:#999"
 			class="am-icon-btn am-icon-arrow-up am-active" id="amz-go-top"></a>
 			<p></p>
 		<a href="#leftNavBars"
-		class="am-icon-btn am-icon-bars am-show-sm-only amz-sidebar-toggle am-menu-toggle"
+		class="am-icon-btn am-icon-bars am-show-sm-only amz-sidebar-toggle am-menu-toggle" style="color:#999"
 		data-am-offcanvas=""><span class="am-sr-only">侧栏导航</span></a>
 </div>
 

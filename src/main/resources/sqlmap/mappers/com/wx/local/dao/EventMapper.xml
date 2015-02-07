@@ -18,6 +18,14 @@
 		<result property="eventName" column="eventName" />
 	</resultMap>
 
+	<select id="getEventById" resultMap="eventResultMap">
+		SELECT
+		*
+		FROM Event
+		WHERE
+		id=#{id}
+	</select>
+
 	<select id="getEventWithLimitById" resultMap="eventResultMap"
 		parameterType="map">
 		SELECT
@@ -72,7 +80,8 @@
 
 	<insert id="addEvent" parameterType="map">
 		INSERT INTO Event
-		(pics,content,eventName, zanCount, viewCount, eventType, userLocalId,userName,
+		(pics,content,eventName, zanCount, viewCount, eventType,
+		userLocalId,userName,
 		fromWhere,
 		status, region,
 		createTime)
@@ -81,6 +90,15 @@
 		#{viewCount},#{type},#{userLocalId},#{userName},
 		#{from},#{status},#{region},now())
 	</insert>
+
+	<update id="incrLove">
+		UPDATE
+		Event
+		SET
+		zanCount = zanCount+1
+		WHERE
+		id=#{id}
+	</update>
 
 </mapper>
 

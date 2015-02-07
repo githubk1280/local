@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8" />
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-<title>永州生活网</title>
+<title>永州本地生活网</title>
 <%@ include file="../common/header"%>
 </head>
 <body class="am-with-fixed-navbar" style="" onload="reminde()">

@@ -108,12 +108,14 @@
 															+ event.id
 															+ ')" style="color:#999" id="love_'
 															+ event.id
-															+ '"><i class="am-icon-heart-o"></i>赞('
-															+ event.zanCount
-															+ ')</a>'
+															+ '"><i class="am-icon-check am-icon-sm"></i>通过'
+															+ '</a>'
 															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
 															+ event.id
-															+ '"><i class="am-icon-reply"></i>评论(10)</a></div></div></li>';
+															+ '"><i class="am-icon-warning am-icon-sm"></i>不通过</a>'
+															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
+															+ event.id
+															+ '"><i class="am-icon-stop am-icon-sm"></i>删除</a></div></div></li>';
 												} else {
 													li = '<li class="am-g am-list-item-thumbed am-list-item-thumb-top">'
 															+ '<div class="am-list-main">'
@@ -132,12 +134,10 @@
 															+ event.id
 															+ ')" style="color:#999" id="love_'
 															+ event.id
-															+ '"><i class="am-icon-heart-o"></i>赞('
-															+ event.zanCount
-															+ ')</a>'
+															+ '"><i class="am-icon-warning am-icon-sm"></i>不通过</a>'
 															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
 															+ event.id
-															+ '"><i class="am-icon-reply"></i>评论(10)</a>';
+															+ '"><i class="am-icon-stop am-icon-sm"></i>删除(10)</a>';
 													//+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" style="color:#999" id="view_'
 													//+ event.id
 													//+ '"><i class="am-icon-eye"></i>阅(10)</a>';

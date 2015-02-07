@@ -18,4 +18,8 @@ public interface EventDao {
 	public List<Event> getEventWithLimitByDate(@Param("date") String date,
 			@Param("direction") String direction, @Param("offset") int offset);
 
+	public void incrLove(int id);
+
+	public Event getEventById(int id);
+
 }

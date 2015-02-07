@@ -16,7 +16,7 @@ public class EventServiceTest extends AbstractBaseTestConfig {
 
 	@Test
 	public void testGetEventWithLimit() {
-		// System.out.println(eventServcie.getEventWithLimit(0, 0, 10));
+		eventServcie.incrLove(313);
 	}
 
 	@Test

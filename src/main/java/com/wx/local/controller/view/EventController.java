@@ -24,6 +24,7 @@ import com.qiniu.api.io.PutRet;
 import com.wx.local.beans.Event;
 import com.wx.local.config.QNConfig;
 import com.wx.local.config.QNConfig.BUCKET_PICS;
+import com.wx.local.constants.PageResourceConstant;
 import com.wx.local.service.EventService;
 import com.wx.local.service.EventService.PullDirection;
 import com.wx.local.utils.EventUtils;
@@ -40,42 +41,50 @@ public class EventController {
 	@Autowired
 	private QNConfig qnConfig;
 
+	@RequestMapping("/detail/{id}")
+	public ModelAndView deatail(@PathVariable int id) {
+		ModelAndView view = new ModelAndView();
+		view.addObject("event", eventService.getEventById(id));
+		view.setViewName(PageResourceConstant.DETAIL);
+		view.addObject("title", "详情");
+		return view;
+	}
+
+	@RequestMapping("/ajax/incr/love/{id}")
+	public void incr(@PathVariable int id, HttpServletResponse response) throws IOException {
+		eventService.incrLove(id);
+		JsonResponseUtils.returnJsonResponse(response, JSON.toJSONString("success"), true, 200);
+	}
+
 	@RequestMapping("/ajax/down/{id}")
 	public void ajaxDownLoad(@PathVariable int id, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		List<Event> events = eventService.getEventWithLimitById(id,
-				PullDirection.DOWN.name(), eventService.NORMAL_OFFSET);
-		WebUtils.setSessionAttribute(request, "pullId",
+		List<Event> events = eventService.getEventWithLimitById(id, PullDirection.DOWN.name(),
 				eventService.NORMAL_OFFSET);
-		JsonResponseUtils.returnJsonResponse(response,
-				JSON.toJSONString(events), true, 200);
+		WebUtils.setSessionAttribute(request, "pullId", eventService.NORMAL_OFFSET);
+		JsonResponseUtils.returnJsonResponse(response, JSON.toJSONString(events), true, 200);
 	}
 
 	@RequestMapping("/ajax/up/{id}")
 	public void ajaxUpLoad(@PathVariable int id, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		List<Event> events = eventService.getEventWithLimitById(id,
-				PullDirection.UP.name(), eventService.NORMAL_OFFSET);
-		WebUtils.setSessionAttribute(request, "pullId",
+		List<Event> events = eventService.getEventWithLimitById(id, PullDirection.UP.name(),
 				eventService.NORMAL_OFFSET);
-		JsonResponseUtils.returnJsonResponse(response,
-				JSON.toJSONString(events), true, 200);
+		WebUtils.setSessionAttribute(request, "pullId", eventService.NORMAL_OFFSET);
+		JsonResponseUtils.returnJsonResponse(response, JSON.toJSONString(events), true, 200);
 	}
 
 	@RequestMapping("/add")
-	public ModelAndView addEvent(String text, String picPath,
-			HttpServletRequest request) {
+	public ModelAndView addEvent(String text, String picPath, HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		logger.info(text + "--" + picPath);
-		String openId = (String) WebUtils
-				.getSessionAttribute(request, "openId");
+		String openId = (String) WebUtils.getSessionAttribute(request, "openId");
 		String eventName = "";
 		Event event = EventUtils.createNormalEvent(openId);
 		event.setPics(picPath);
 		event.setEventName(eventName);
 		event.setContent(text);
-		event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客"
-				+ new Date().getTime() : openId);
+		event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客" + new Date().getTime() : openId);
 		event.setFrom("website");
 		eventService.addEvent(event);
 		// view.addObject("", "");
@@ -84,29 +93,24 @@ public class EventController {
 	}
 
 	@RequestMapping("/addForm")
-	public ModelAndView addEventByForm(MultipartFile file, String text,
-			HttpServletRequest request) throws AuthException, JSONException,
-			IOException {
+	public ModelAndView addEventByForm(MultipartFile file, String text, HttpServletRequest request)
+			throws AuthException, JSONException, IOException {
 		ModelAndView view = new ModelAndView();
-		String picPath ="";
+		String picPath = "";
 		if (!file.isEmpty()) {
 			PutRet result = null;
-			String fileName = "file-pics-" + file.getOriginalFilename()
-					+ new Date().getTime();
-			result = qnConfig.uploadFile(file.getInputStream(), fileName,
-					BUCKET_PICS.pics.name());
+			String fileName = "file-pics-" + file.getOriginalFilename() + new Date().getTime();
+			result = qnConfig.uploadFile(file.getInputStream(), fileName, BUCKET_PICS.pics.name());
 			logger.info(result.getKey());
 			picPath = result.getKey();
 		}
-		String openId = (String) WebUtils
-				.getSessionAttribute(request, "openId");
+		String openId = (String) WebUtils.getSessionAttribute(request, "openId");
 		String eventName = "";
 		Event event = EventUtils.createNormalEvent(openId);
 		event.setPics(picPath);
 		event.setEventName(eventName);
 		event.setContent(text);
-		event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客"
-				+ new Date().getTime() : openId);
+		event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客" + new Date().getTime() : openId);
 		event.setFrom("website");
 		eventService.addEvent(event);
 

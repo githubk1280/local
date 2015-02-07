@@ -19,47 +19,53 @@
 <link href="http://7u2o1z.com1.z0.glb.clouddn.com/assets/css/app.css"
 	rel="stylesheet" />
 </head>
-<body class="am-with-fixed-navbar" style="">
+<body style="">
 	<!--[if lte IE 9]>
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，我们不提供支持。 请升级浏览器</a>
   以获得更好的体验！</p>
 <![endif]-->
-	<header class="am-header am-header-default" data-am-widget="header">
-		<h1 class="am-header-title">
-			<img src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/i/yz-t.png" />test
-		</h1>
-	</header>
-	<div id="container">
-		<form class="am-form">
-			<fieldset>
-				<div class="am-form-group">
-					<textarea id="doc-ta-1" rows="10" class=""
-						placeholder="分享一个。。。时间、地点、人物"></textarea>
-				</div>
-				<div class="doc-example">
-					<a class="am-btn am-btn-primary" id="upload_button"
-						style="width: 100%">投稿</a>
-				</div>
-				<br />
-				<div class="am-form-group">
-					<label for="doc-ipt-file-1">传个图片(可以拍照上传哦)</label> <input
-						type="file" id="pickfiles">
-						<input type="hidden" id="picUrl" name="picPath" />
-					<p class="am-form-help">请选择要上传的文件</p>
-				</div>
-				<div class="doc-example">
-					<img id="source_image" class='img_container' /><img
-						id="result_image" class='img_container' />
-				</div>
-			</fieldset>
-		</form>
+	<div class="am-page" id="mobile-index">
+		<header data-am-widget="header" class="am-header am-header-default">
+			<div class="am-header-left am-header-nav">
+				<a href="#left-link" class=""> <i
+					class="am-header-icon am-icon-home"></i>
+				</a>
+			</div>
+			<h1 class="am-header-title">
+				<a href="#title-link" class="">Amaze UI</a>
+			</h1>
+			<div class="am-header-right am-header-nav">
+				<a href="#right-link" class=""> <i
+					class="am-header-icon am-icon-bars"></i>
+				</a>
+			</div>
+		</header>
+		<div id="widget-list">
+			<form class="am-form">
+				<fieldset>
+					<div class="am-form-group">
+						<textarea id="doc-ta-1" rows="10" class=""
+							placeholder="分享一个。。。时间、地点、人物"></textarea>
+					</div>
+					<div class="doc-example">
+						<a class="am-btn am-btn-primary" id="upload_button"
+							style="width: 100%">投稿</a>
+					</div>
+					<br />
+					<div class="am-form-group">
+						<label for="doc-ipt-file-1">传个图片(可以拍照上传哦)</label> <input
+							type="file" id="pickfiles"> <input type="hidden"
+							id="picUrl" name="picPath" />
+						<p class="am-form-help">请选择要上传的文件</p>
+					</div>
+					<div class="doc-example">
+						<img id="source_image" class='img_container' /><img
+							id="result_image" class='img_container' />
+					</div>
+				</fieldset>
+			</form>
+		</div>
 	</div>
-	<script src="assets/js/plupload/plupload.full.min.js"></script>
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/amazeui.js"></script>
-	<script src="assets/js/upload/JIC.js"></script>
-	<script src="assets/js/upload/qiniu.min.js"></script>
-	<script src="assets/js/upload/main.js"></script>
 
 </body>
 </html>
