@@ -69,19 +69,20 @@
 			$btn.button('loading');
 			queryEvent(downStartId.val());
 		});
-		function cutContent(content){
-			if(content && content.length >22){
-				content = content.substring(0,15);
+		function cutContent(content) {
+			if (content && content.length > 22) {
+				content = content.substring(0, 15);
 				content += '。。。(详情)';
 			}
 			return content;
 		}
-		function forwardTo(id){
-			location.href = location.origin + "/local/event/detail/"+id;
+		function forwardTo(id) {
+			location.href = location.origin + "/local/event/detail/" + id;
 		}
 		function queryEvent(id) {
 			var btn = $('.btn-loading-example');
-			$.ajax({
+			$
+					.ajax({
 						type : 'get',
 						url : '/local/event/ajax/down/' + id,
 						success : function(response) {
@@ -91,13 +92,15 @@
 								$('#clickMore')[0].innerHTML = '没有更多了,不如发一个<i class="am-header-icon am-icon-camera" style="font-size: 150%;"></i>';
 								return;
 							}
-							$(data).each(function(index, event) {
+							$(data)
+									.each(
+											function(index, event) {
 												var li = '';
 												if (event.pics) {
 													li = '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">'
-															+ '<div class="am-u-sm-4 am-list-thumb">'
+															+ '<div class="am-u-sm-4 am-list-thumb" onclick="forwardTo('+event.id+')">'
 															+ '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-thumb" style="border-radius: 9px;" alt=""> </div>';
-													li += '<div class="am-u-sm-8 am-list-main" onclick="forwardTo('+event.id+')">'
+													li += '<div class="am-u-sm-8 am-list-main" >'
 															+ '<h3 class="am-list-item-hd">'
 															+ '<a href="event/detail/'+ event.id+'" style="color: black">'
 															+ cutContent(event.content)
