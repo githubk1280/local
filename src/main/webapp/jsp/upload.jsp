@@ -47,8 +47,8 @@
 	<%@ include file="../common/footer"%>
 
 	<!-- 	<script src="../assets/js/plupload/plupload.full.min.js"></script> -->
-	<script src="../assets/js/jquery.min.js"></script>
-	<script src="../assets/js/amazeui.js"></script>
+	<!-- 	<script src="../assets/js/jquery.min.js"></script> -->
+	<!-- 	<script src="../assets/js/amazeui.js"></script> -->
 	<!-- 	<script src="../assets/js/upload/JIC.js"></script> -->
 	<!-- 	<script src="../assets/js/upload/qiniu.min.js"></script> -->
 	<!-- 	<script src="../assets/js/upload/demo.js"></script> -->
@@ -67,14 +67,14 @@
 			// 			});
 		}
 
-		function jump() {
-			var preSuffix = location.origin + "/local/send/show/";
-			if (window.FileReader) {
-				location.href = preSuffix + "compress";
-				return;
-			}
-			location.href = preSuffix + "qn";
-		}
+		// 		function jump() {
+		// 			var preSuffix = location.origin + "/local/send/show/";
+		// 			if (window.FileReader) {
+		// 				location.href = preSuffix + "compress";
+		// 				return;
+		// 			}
+		// 			location.href = preSuffix + "qn";
+		// 		}
 	</script>
 </body>
 </html>

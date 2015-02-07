@@ -39,12 +39,11 @@ public class IndexController {
 		List<Event> events = eventService.getEventWithLimitByDate(
 				getUserPullFromDate(request), PullDirection.DOWN.name(),
 				eventService.NORMAL_OFFSET);
-		logger.info(events);
 		int upStartId = setPullId(request, "upPullStartId", events, 0);
 		int downStartId = setPullId(request, "downPullStartId", events, 0);
 		view.addObject("events", events);
 		view.addObject("upStartId", upStartId);
-		view.addObject("downStartId", downStartId);
+		view.addObject("downStartId", downStartId + 1);
 		view.setViewName(PageResourceConstant.INDEX);
 		return view;
 	}

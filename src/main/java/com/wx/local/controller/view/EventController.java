@@ -88,26 +88,28 @@ public class EventController {
 			HttpServletRequest request) throws AuthException, JSONException,
 			IOException {
 		ModelAndView view = new ModelAndView();
-		PutRet result = null;
-		String fileName = "file-pics-" + file.getOriginalFilename()
-				+ new Date().getTime();
-		result = qnConfig.uploadFile(file.getInputStream(), fileName,
-				BUCKET_PICS.pics.name());
-		if (result.ok()) {
+		String picPath ="";
+		if (!file.isEmpty()) {
+			PutRet result = null;
+			String fileName = "file-pics-" + file.getOriginalFilename()
+					+ new Date().getTime();
+			result = qnConfig.uploadFile(file.getInputStream(), fileName,
+					BUCKET_PICS.pics.name());
 			logger.info(result.getKey());
-			String openId = (String) WebUtils.getSessionAttribute(request,
-					"openId");
-			String eventName = "";
-			Event event = EventUtils.createNormalEvent(openId);
-			event.setPics(result.getKey());
-			event.setEventName(eventName);
-			event.setContent(text);
-			event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客"
-					+ new Date().getTime() : openId);
-			event.setFrom("website");
-			eventService.addEvent(event);
-
+			picPath = result.getKey();
 		}
+		String openId = (String) WebUtils
+				.getSessionAttribute(request, "openId");
+		String eventName = "";
+		Event event = EventUtils.createNormalEvent(openId);
+		event.setPics(picPath);
+		event.setEventName(eventName);
+		event.setContent(text);
+		event.setUserLocalId(StringUtils.isEmpty(openId) ? "游客"
+				+ new Date().getTime() : openId);
+		event.setFrom("website");
+		eventService.addEvent(event);
+
 		view.setViewName("redirect:/index");
 		return view;
 	}

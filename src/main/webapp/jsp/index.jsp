@@ -35,24 +35,25 @@
 	<script
 		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/jquery.min.js"></script>
 	<script
-		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.js"></script>
+		src="http://7u2o1z.com1.z0.glb.clouddn.com/assets/js/amazeui.min.js"></script>
 	<script type="text/javascript">
 		function getFirst() {
 			queryEvent($('#downStartId').val());
 		}
+		
 		$('.btn-loading-example').click(function() {
 			var $btn = $(this);
 			var downStartId = $('#downStartId');
 			$btn.button('loading');
 			queryEvent(downStartId.val());
 		});
-
+		
 		function queryEvent(id) {
 			var btn = $('.btn-loading-example');
 			$
 					.ajax({
 						type : 'get',
-						url : '/local/event/ajax/down/'+id,
+						url : '/local/event/ajax/down/' + id,
 						success : function(response) {
 							var data = JSON.parse(JSON.parse(response).data);
 							var parent = $('#allEvents');
@@ -63,7 +64,7 @@
 							$(data)
 									.each(
 											function(index, event) {
-												var li = '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-top">'
+												var li = '<li class="am-g am-list-item-thumbed am-list-item-thumb-top">'
 														+ '<div class="am-list-main">'
 														+ '<h3 class="am-list-item-hd">'
 														+ event.content
@@ -74,18 +75,18 @@
 													li += '<div class="am-list-thumb am-u-sm-12">';
 													li += '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-sy" style="border-radius: 9px;"></div>';
 												}
-												li += '<div class="am-list-thumb am-u-sm-12">';
+												li += '<div class="am-u-sm-12" style="color:#999;font-size:12px;margin-bottom: 0.8rem;padding: 0">';
 												li += timeStamp2String(event.createTime)
-														+ '| 来源： ' + event.from
-														+ event.id + '</div>';
-												li += '<div class="am-list-thumb am-u-sm-12">';
-												li += '<a href=""><i class="am-icon-thumbs-o-up am-icon-sm"></i>('
+														+ '&nbsp;&nbsp;<a href="javascript:void(0)" style="color:#999" id="love'+index+'"><i class="am-icon-heart-o"></i>('
 														+ event.zanCount
-														+ ')</a>&nbsp';
-												li += '<a href=""><i class="am-icon-thumbs-o-down am-icon-sm"></i>('
-														+ event.zanCount
-														+ ')</a>&nbsp';
-												li += '<a href="http://fontawesome.io/icon/comments-o"><i class="am-icon-comments-o am-icon-sm"></i> 评论(20)</a></div></li>';
+														+ ')</a>'
+														+ '&nbsp;&nbsp;<a href="javascript:void(0)" style="color:#999" id="review'+index+'"><i class="am-icon-comments-o"></i>(20)</a>';
+												if(event.from && event.from != 'website'){
+													li += ' | 来源:'
+													+ event.from
+													+ '</div>';
+												}
+												li += '</li>';
 												parent.append(li);
 												if (index == data.length - 1) {
 													$('#downStartId').attr(
