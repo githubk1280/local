@@ -45,8 +45,8 @@ import lombok.Data;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "toUserName", "fromUserName", "createTime", "msgType", "content",
-		"msgId", "event", "eventKey" })
+@XmlType(name = "", propOrder = { "toUserName", "fromUserName", "createTime",
+		"msgType", "content", "msgId", "event", "eventKey", "image" })
 @XmlRootElement(name = "xml")
 @Data
 public class Xml {
@@ -67,5 +67,7 @@ public class Xml {
 	protected String event;
 	@XmlElement(name = "EventKey")
 	protected String eventKey;
+	@XmlElement(name = "Image")
+	protected Image image;
 
 }

@@ -19,7 +19,7 @@
 <![endif]-->
 	<%@ include file="../common/nav"%>
 	<div style="margin: 0 10px">
-		<h3 style="font-weight: 300">${event.content}</h3>
+		<h3 style="font-weight: 300;color:black">${event.content}</h3>
 
 	</div>
 	<c:if test="${event.pics !=null && event.pics != ''}">

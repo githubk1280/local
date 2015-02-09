@@ -17,10 +17,16 @@ public class MessageHandlerFactory {
 	@Qualifier("viewEventHandlerImpl")
 	private MessageHandler viewEventHandlerImpl;
 
+	@Autowired
+	@Qualifier("subscribeEventHandlerImpl")
+	private MessageHandler subscribeEventHandlerImpl;
+
 	public MessageHandler get(String type, String eventType) {
 		if (type.equals(MessageTypeEnum.event.name())) {
 			if (eventType.equals(EventTypeEnum.VIEW.name())) {
 				return viewEventHandlerImpl;
+			} else if (eventType.equals(EventTypeEnum.subscribe.name())) {
+				return subscribeEventHandlerImpl;
 			}
 		} else if (type.equals(MessageTypeEnum.text.name())) {
 			return textHandlerImpl;

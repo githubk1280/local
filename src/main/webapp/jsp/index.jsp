@@ -97,26 +97,31 @@
 											function(index, event) {
 												var li = '';
 												if (event.pics) {
-													li = '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">'
-															+ '<div class="am-u-sm-4 am-list-thumb" onclick="forwardTo('+event.id+')">'
-															+ '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-thumb" style="border-radius: 9px;" alt=""> </div>';
+													li = '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">';
 													li += '<div class="am-u-sm-8 am-list-main" >'
 															+ '<h3 class="am-list-item-hd">'
 															+ '<a href="event/detail/'+ event.id+'" style="color: black">'
 															+ cutContent(event.content)
 															+ '</a></h3>';
-													// li += timeStamp2String(event.createTime)
-													li += '<div class="am-list-item-text"><br/>';
-													li += '<a href="javascript:loveIt('
+													li += '<div class="am-list-item-text" style="color:#999;font-size:12px;margin-bottom: 0.8rem;padding: 0"><br/>';
+													li += timeStamp2String(event.createTime);
+// 													li += '<a href="javascript:loveIt('
+// 															+ event.id
+// 															+ ')" style="color:#999" id="love_'
+// 															+ event.id
+// 															+ '"><i class="am-icon-heart-o"></i>赞('
+// 															+ event.zanCount
+// 															+ ')</a>'
+// 															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
+// 															+ event.id
+// 															+ '"><i class="am-icon-reply"></i>评论(10)</a>';
+													li += '</div>';
+													li += '</div>';
+													li += '<div class="am-u-sm-4 am-list-thumb" onclick="forwardTo('
 															+ event.id
-															+ ')" style="color:#999" id="love_'
-															+ event.id
-															+ '"><i class="am-icon-heart-o"></i>赞('
-															+ event.zanCount
-															+ ')</a>'
-															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
-															+ event.id
-															+ '"><i class="am-icon-reply"></i>评论(10)</a></div></div></li>';
+															+ ')" style="max-height: 80px;max-width: 100px;">'
+															+ '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-thumb" style="border-radius: 8px;" alt=""> </div>';
+													li += '</li>';
 												} else {
 													li = '<li class="am-g am-list-item-thumbed am-list-item-thumb-top">'
 															+ '<div class="am-list-main">'
@@ -129,28 +134,28 @@
 														li += '<div class="am-list-thumb am-u-sm-12">';
 														li += '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-sy" style="border-radius: 9px;"></div>';
 													}
+
 													li += '<div class="am-u-sm-12" style="color:#999;font-size:12px;margin-bottom: 0.8rem;padding: 0">';
 													li += timeStamp2String(event.createTime)
-															+ '&nbsp;&nbsp;<a href="javascript:loveIt('
-															+ event.id
-															+ ')" style="color:#999" id="love_'
-															+ event.id
-															+ '"><i class="am-icon-heart-o"></i>赞('
-															+ event.zanCount
-															+ ')</a>'
-															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
-															+ event.id
-															+ '"><i class="am-icon-reply"></i>评论(10)</a>';
-													//+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" style="color:#999" id="view_'
-													//+ event.id
-													//+ '"><i class="am-icon-eye"></i>阅(10)</a>';
+// 															+ '&nbsp;&nbsp;<a href="javascript:loveIt('
+// 															+ event.id
+// 															+ ')" style="color:#999" id="love_'
+// 															+ event.id
+// 															+ '"><i class="am-icon-heart-o"></i>赞('
+// 															+ event.zanCount
+// 															+ ')</a>'
+// 															+ '&nbsp;&nbsp;&nbsp;&nbsp;<a href="event/detail/'+ event.id+'" style="color:#999" id="review_'
+// 															+ event.id
+// 															+ '"><i class="am-icon-reply"></i>评论(10)</a>';
+// 													+'&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" style="color:#999" id="view_'
+// 															+ event.id
+// 															+ '"><i class="am-icon-eye"></i>阅(10)</a>';
 													if (event.from
 															&& event.from != 'website') {
 														li += ' | 来源:'
-																+ event.from
-																+ '</div>';
+																+ event.from;
 													}
-													li += '</li>';
+													li += '</div></li>';
 												}
 												parent.append(li);
 												if (index == data.length - 1) {
