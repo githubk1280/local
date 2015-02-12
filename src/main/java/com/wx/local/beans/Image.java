@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 import lombok.Data;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "MediaId" })
+@XmlType(name = "", propOrder = { "mediaId" })
 @XmlRootElement(name = "Image")
 @Data
 public class Image {

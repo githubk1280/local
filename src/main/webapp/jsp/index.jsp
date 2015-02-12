@@ -120,7 +120,7 @@
 													li += '<div class="am-u-sm-4 am-list-thumb" onclick="forwardTo('
 															+ event.id
 															+ ')" style="max-height: 80px;max-width: 100px;">'
-															+ '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-thumb" style="border-radius: 8px;" alt=""> </div>';
+															+ '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-small" style="border-radius: 3px;width: 120px;height: 84px" alt=""> </div>';
 													li += '</li>';
 												} else {
 													li = '<li class="am-g am-list-item-thumbed am-list-item-thumb-top">'
@@ -132,7 +132,7 @@
 															+ '</div>';
 													if (event.pics) {
 														li += '<div class="am-list-thumb am-u-sm-12">';
-														li += '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-sy" style="border-radius: 9px;"></div>';
+														li += '<img src="http://7u2mg0.com1.z0.glb.clouddn.com/'+event.pics+'-sy" style="border-radius: 3px;"></div>';
 													}
 
 													li += '<div class="am-u-sm-12" style="color:#999;font-size:12px;margin-bottom: 0.8rem;padding: 0">';

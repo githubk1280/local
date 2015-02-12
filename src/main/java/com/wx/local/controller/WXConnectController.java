@@ -6,12 +6,14 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.common.collect.Lists;
+import com.wx.local.beans.Xml;
 import com.wx.local.config.WXConfig;
 import com.wx.local.utils.CommonUtils;
 
@@ -19,9 +21,9 @@ import com.wx.local.utils.CommonUtils;
 public class WXConnectController {
 	Logger logger = Logger.getLogger(getClass());
 
-	@RequestMapping("/wx/connect")
-	public void testConnect(String signature, String timestamp, String nonce,
-			String echostr, HttpServletResponse respnose) throws IOException {
+	// @RequestMapping("/wx/connect")
+	public void testConnect(String signature, String timestamp, String nonce, String echostr,
+			HttpServletResponse respnose) throws IOException {
 		logger.info(signature + "," + timestamp + "," + nonce + "," + echostr);
 		List<String> params = Lists.newArrayList();
 		params.add(WXConfig.token);
@@ -32,8 +34,7 @@ public class WXConnectController {
 		logger.info(params);
 		String paramsStr = list2String(params);
 		String encrytpStr = CommonUtils.encrypt(paramsStr, "SHA-1");
-		logger.info(signature + " SHA1 match ? " + signature.equals(encrytpStr)
-				+ " " + encrytpStr);
+		logger.info(signature + " SHA1 match ? " + signature.equals(encrytpStr) + " " + encrytpStr);
 		PrintWriter writer = respnose.getWriter();
 		writer.write(echostr);
 	}

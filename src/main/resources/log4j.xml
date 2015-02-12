@@ -9,7 +9,7 @@
 	</appender>
 
 	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="D:\data\applogs\local.log" />
+		<param name="File" value="D:/data/applogs/local.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[dailyFileAppender]%d 
 		%-5p [%c] %m%n" />
@@ -17,7 +17,7 @@
 	</appender>
 
 	<appender name="ibatisAppender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="D:\data\applogs\sql.log" />
+		<param name="File" value="D:/data/applogs/sql.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[ibatisFileAppender]%d 
 		%-5p [%c] %m%n" />
